@@ -1,20 +1,17 @@
 import React from 'react';
-import TestThoughtPost from './testThoughtPost';
 
-
-class TestThoughtsPostPreview extends React.Component{
+class TestComment extends React.Component{
     render(){
-      console.log("testPostPreview", this.props);
 
       return(
-        <div className = "post-preview">
-
+        <div>
+        <p>this is single comment</p>
         </div>
       )
     }
   };
 
-export default TestThoughtsPostPreview;
+export default TestComment;
 
 //        {this.props.thoughts_.map((thoughts, i) => <TestPostPreview key = {i} myProps = {this.props}/>)}
 // console.log("In ",this.props.thoughts_[0]["id"]);

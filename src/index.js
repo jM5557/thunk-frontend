@@ -1,6 +1,12 @@
 import React from 'react';
 import {render} from 'react-dom';
-import Test from './components/testKyo/test';
+import App from './components/App';
+import LoggedOutView from './components/layout/LoggedOutView';
+import LoggedInMasterView from './components/layout/LoggedInMasterView';
+import Thoughts from './components/posts/Thoughts';
+import ThoughtPreview from './components/posts/ThoughtPreview';
+import SingleThought from './components/posts/SingleThought';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import {Provider} from 'react-redux';
 import myStore from './store';
 
@@ -8,7 +14,7 @@ import myStore from './store';
 const router =
 (
   <Provider store = {myStore}>
-    <Test />
+    <App/>
   </Provider>
 )
 

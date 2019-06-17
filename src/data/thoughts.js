@@ -5,7 +5,7 @@ const thoughts = [
     "up_vote": 10,
     "down_vote": 2,
     "report_count": 0,
-    "hash_tag":["snow", "daily",],
+    "hash_tag":["snow", "daily","more", "hhhhh"],
     "time_stamp" : "1 min ago", //i dont need this later
   },
   {

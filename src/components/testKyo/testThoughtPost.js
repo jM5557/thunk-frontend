@@ -6,7 +6,6 @@ class TestThoughtsPost extends React.Component{
     render(){
       let myUpVote = this.props.myProps.up_vote;
       let myDownVote = this.props.myProps.down_vote;
-      let myVOTE = myUpVote-myDownVote;
 
       // {this.props.thoughts_.map((myThoughts, i) => <TestThoughtPost key = {i} inputPostId = {myThoughts.id} myProps = {myThoughts} {...this.props}/>)}
 
@@ -15,6 +14,7 @@ class TestThoughtsPost extends React.Component{
         <div>
         <br/>
         <p>----------This is TestPost.js Start----------</p>
+
         <p>id:{this.props.myProps.id}</p>
         <p>text:{this.props.myProps.text}</p>
         <p>upVote:{myUpVote}</p>
@@ -26,6 +26,8 @@ class TestThoughtsPost extends React.Component{
         <button onClick = {this.props.upVote.bind(null, this.props.inputPostId)}>upVote</button>
         <button onClick = {this.props.downVote.bind(null, this.props.inputPostId)}>downVote</button>
         <button>report</button>
+        <button> post with comment </button>
+
 
 
         <p>----------This is TestPost.js End----------</p>
