@@ -16,8 +16,9 @@ export default class LoggedInMasterView extends Component {
 
     componentDidMount() {
       this.interval = setInterval(() => { 
+
         this.fetchGeolocationData( (pos_dat) => {
-          console.log(pos_dat.coords.latitude);
+
           this.setState({
             loc: { 
               long: pos_dat.coords.latitude,
@@ -25,7 +26,8 @@ export default class LoggedInMasterView extends Component {
             },
             timestamp: new Date().toLocaleTimeString()
           });
-        }); 
+        });
+        
       }, 1000);
     }
 

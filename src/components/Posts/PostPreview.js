@@ -17,7 +17,7 @@ export default class PostPreview extends Component {
             },
 
             tags: [ 
-                { text: 'ThoughtApp'},
+                { text: 'ThoughtApp' },
                 { text: 'ThunkIsCool' }, 
                 { text: 'WatIsThunk' }
             ]
@@ -29,7 +29,7 @@ export default class PostPreview extends Component {
         let displayTags = this.state.tags.map( (t, i) => {
             return (
 
-                <span>
+                <span key = {i}>
                     { "#" + t.text }
                 </span>
 
