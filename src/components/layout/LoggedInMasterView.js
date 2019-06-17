@@ -1,4 +1,7 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
+import { Route, Switch } from 'react-router-dom';
+import PostPreview from './../posts/PostPreview';
+import Navbar from './../partials/navbar';
 
 export default class LoggedInMasterView extends Component {
 
@@ -51,9 +54,14 @@ export default class LoggedInMasterView extends Component {
     render() {
       console.log(this.state.loc.lat + ", " + this.state.loc.long + " | " + this.state.timestamp);
       return (
-          <div>
-              
-          </div>
+        <Fragment>
+
+          <Switch>
+            <Route path = "/post/preview" component = { PostPreview } />
+          </Switch>
+
+          <Navbar />
+        </Fragment>
       )
     }
 }

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import CommentList from '../comments/CommentList';
 
 export default class PostPreview extends Component {
     
@@ -20,6 +21,15 @@ export default class PostPreview extends Component {
                 { text: 'ThoughtApp' },
                 { text: 'ThunkIsCool' }, 
                 { text: 'WatIsThunk' }
+            ],
+
+            comments: [
+                {
+                    text: "This is a cool comment"
+                },
+                {
+                    text: "This comment is better than yours"
+                }
             ]
         }
     }
@@ -60,6 +70,10 @@ export default class PostPreview extends Component {
                     </div>
 
                     <button className = "report">Flag</button>
+                </div>
+
+                <div className = "comments-list">
+                    <CommentList list = { this.state.comments } />
                 </div>
             </div>
         )

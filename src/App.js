@@ -15,8 +15,7 @@ export default class App extends Component {
       <Router>
 
         <Switch>
-          <Route exact path = "/post/preview" component = { PostPreview } />
-          <Route exact path = "/" component = { LoggedOutView } />
+          <Route component = { LoggedInMasterView } />
         </Switch>
 
       </Router>
