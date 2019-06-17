@@ -11,7 +11,7 @@ class PostPreviewList extends Component {
   render() {
     return (
       <div className="Post-Preview-List-Wrapper">
-        <PostPreview 
+        <PostPreview /> 
       </div>
     )
 }
