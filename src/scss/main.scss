@@ -2,16 +2,22 @@
 @import './partials/variables.scss';
 
 body {
-    font-family: $normal-font;
+  font-family: $normal-font;
 }
 
-h1,h2,h3,h4,h5,h6,
-header, button {
-    font-family: $heavy-font;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+header,
+button {
+  font-family: $heavy-font;
 }
 
 button {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .main-nav {
@@ -34,114 +40,125 @@ button {
 }
 
 .login-btn {
-    background-color: #FFF;
-    border-radius: 200px;
-    padding: 15px;
-    display: block;
-    color: $color-blue;
-    margin: 15px auto;
-    width: 95%;
-    max-width: 360px;
-    font-size: 18px;
+  background-color: #fff;
+  border-radius: 200px;
+  padding: 15px;
+  display: block;
+  color: $color-blue;
+  margin: 15px auto;
+  width: 95%;
+  max-width: 360px;
+  font-size: 18px;
 }
 
 .logged-out-layout {
-    background-color: $color-blue;
-    box-sizing: border-box;
-    min-height: 100vh;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  background-color: $color-blue;
+  box-sizing: border-box;
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .logged-out-inner {
-    max-width: 720px;
-    margin: auto;
-    text-align: center;
-    color: #FFF;
+  max-width: 720px;
+  margin: auto;
+  text-align: center;
+  color: #fff;
 
-    h1 {
-        font-size: 45px;
-        font-weight: bolder;
-        margin-bottom: 25px;
-    }
+  h1 {
+    font-size: 45px;
+    font-weight: bolder;
+    margin-bottom: 25px;
+  }
 
-    .forgot-password {
-        font-weight: bolder;
-        color: #70cfec;
-        padding: 8px;
-        margin-top: 10px;
-        display: block;
-    }
+  .forgot-password {
+    font-weight: bolder;
+    color: #70cfec;
+    padding: 8px;
+    margin-top: 10px;
+    display: block;
+  }
 }
 
 .post-preview {
-    background-color: #FFF;
-    box-shadow: 0px 3px 10px -4px rgba(0,0,0,0.65);
-    padding: 20px 25px;
-    max-width: 85%;
-    margin: auto;
-    border-radius: 6px;
+  background-color: #fff;
+  box-shadow: 0px 3px 10px -4px rgba(0, 0, 0, 0.65);
+  padding: 20px 25px;
+  max-width: 85%;
+  margin: auto;
+  margin-bottom: 10px;
+  border-radius: 6px;
 
-    .details-top {
-        text-align: right;
+  .text {
+    font-size: 22px;
+    font-weight: bolder;
+    padding: 15px 10px 15px;
+    margin: 10px auto;
+    background-color: #eee;
+    border-radius: 3px;
+  }
 
-        .timestamp {
-            color: #AAA;
-            font-size: 15px;
-        }
+  .details-top {
+    text-align: right;
+
+    .timestamp {
+      color: #aaa;
+      font-size: 15px;
+    }
+  }
+
+  .tags {
+    display: flex;
+
+    span {
+      margin: 5px;
+      background-color: #eee;
+      padding: 8px;
+      font-size: 13px;
+    }
+  }
+
+  .controls-bottom {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row wrap;
+    align-items: center;
+
+    .vote-wrapper {
+      button,
+      span {
+        margin: 5px;
+      }
     }
 
-    .tags {
-        display: flex;
+    .vote {
+      border: none;
+      display: inline-block;
+      text-indent: -999999px;
+      background-color: $color-blue;
+      padding: 15px 25px;
+      border-radius: 3px;
 
-        span {
-            margin: 5px;
-            background-color: #eee;
-            padding: 8px;
-            font-size: 13px;    
-        }
+      &.up {
+        background: $color-blue url('./../images/votes-up.png') no-repeat center
+          center;
+        background-size: 65% auto;
+      }
 
+      &.down {
+        background: $color-blue url('./../images/votes-down.png') no-repeat
+          center center;
+        background-size: 65% auto;
+      }
     }
 
-    .controls-bottom {
-        display: flex;
-        justify-content: space-between;
-        flex-direction: row wrap;
-        align-items: center;
-
-        .vote-wrapper {
-            button, span {
-                margin: 5px;
-            }
-        }
-
-        .vote {
-            border: none;
-            display: inline-block;
-            text-indent: -999999px;
-            background-color: $color-blue;
-            padding: 15px 25px;
-            border-radius: 3px;
-            
-            &.up {
-                background: $color-blue url('./../images/votes-up.png') no-repeat center center;
-                background-size: 65% auto;
-            }
-
-            &.down {
-                background: $color-blue url('./../images/votes-down.png') no-repeat center center;
-                background-size: 65% auto;
-            }
-        }
-
-        .votes {
-            font-weight: bolder;
-            font-size: 20px;
-            padding: 10px;
-        }
-    }
+    .votes {
+      font-weight: bolder;
+      font-size: 20px;
+      padding: 10px;
+    } }
 }
 
 .text {
@@ -203,4 +220,14 @@ button {
     flex-flow: row wrap;
     justify-content: flex-end;
     align-items: center;
+}
+
+.comment-btn {
+  background-color: none;
+  border: none;
+  margin: auto auto auto 5px;
+  i {
+    font-size: 25px;
+    color: $color-blue;
+  }
 }

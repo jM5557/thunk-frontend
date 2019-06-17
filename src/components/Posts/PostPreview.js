@@ -1,81 +1,44 @@
-import React, { Component } from 'react';
-import CommentList from '../comments/CommentList';
+import React from 'react';
 
-export default class PostPreview extends Component {
-    
-    constructor (props) {
-        super(props);
+const PostPreview = props => {
+  console.log(props);
+  const { timestamp, upvotes, downvotes, text } = props.post;
 
-        this.state = {
-            data: {
-                id: 1,
-                timestamp: new Date().toLocaleDateString(),
-                upvotes: 0,
-                downvotes: 0,
-                text: "This is a thought I once had. Isn't it cool huh?",
-                longitude: 297,
-                latitude: 325
-            },
+  const tags = [
+    { text: 'ThoughtApp' },
+    { text: 'ThunkIsCool' },
+    { text: 'WatIsThunk' }
+  ];
 
-            tags: [ 
-                { text: 'ThoughtApp' },
-                { text: 'ThunkIsCool' }, 
-                { text: 'WatIsThunk' }
-            ],
+  let displayTags = tags.map((t, i) => {
+    return <span key={i}>{'#' + t.text}</span>;
+  });
 
-            comments: [
-                {
-                    text: "This is a cool comment"
-                },
-                {
-                    text: "This comment is better than yours"
-                }
-            ]
-        }
-    }
-    
-    render() {
+  return (
+    <div className='post-preview'>
+      <div className='details-top'>
+        <span className='timestamp'>{timestamp}</span>
+      </div>
 
-        let displayTags = this.state.tags.map( (t, i) => {
-            return (
+      <div className='text'>{text}</div>
 
-                <span key = {i}>
-                    { "#" + t.text }
-                </span>
+      <div className='tags'>{displayTags}</div>
 
-            )
-        });
+      <div className='controls-bottom'>
+        <div className='vote-wrapper'>
+          <button className='vote up'>Up</button>
+          <span className='votes'>{upvotes - downvotes}</span>
+          <button className='vote down'>Down</button>
+        </div>
+        <button className='comment-btn'>
+          <i className='fas fa-comments' />
+        </button>
+        <button className='report'>
+          <i class='fas fa-flag' />
+        </button>
+      </div>
+    </div>
+  );
+};
 
-        return (
-            <div className = "post-preview">
-                <div className = "details-top">
-                    <span className = "timestamp">
-                        { this.state.data.timestamp }
-                    </span>
-                </div>
-
-                <div className = "text">
-                    { this.state.data.text }
-                </div>
-
-                <div className = "tags">
-                    { displayTags }
-                </div>
-
-                <div className = "controls-bottom">
-                    <div className = "vote-wrapper">
-                        <button className = "vote up">Up</button>
-                        <span className = "votes">{ (this.state.data.upvotes - this.state.data.downvotes) }</span>
-                        <button className = "vote down">Down</button>
-                    </div>
-
-                    <button className = "report">Flag</button>
-                </div>
-
-                <div className = "comments-list">
-                    <CommentList list = { this.state.comments } />
-                </div>
-            </div>
-        )
-    }
-}
+export default PostPreview;
