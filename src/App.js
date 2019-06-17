@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
 import LoggedInMasterView from './components/layout/LoggedInMasterView';
 import LoggedOutView from './components/layout/LoggedOutView';
 import PostPreview from './components/Posts/PostPreview';
+import PostPreviewList from './components/Posts/PostPreviewList';
 
 export default class App extends Component {
   // constructor (props) {
@@ -14,7 +15,7 @@ export default class App extends Component {
     return (
       <Router>
         <Switch>
-          <Route exact path='/post/preview' component={PostPreview} />
+          <Route exact path='/post/preview' component={PostPreviewList} />
           <Route exact path='/' component={LoggedOutView} />
         </Switch>
       </Router>
