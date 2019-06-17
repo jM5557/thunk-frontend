@@ -27,8 +27,8 @@ export default class LoggedInMasterView extends Component {
             timestamp: new Date().toLocaleTimeString()
           });
         });
-        
-      }, 1000);
+
+      }, 60000);
     }
 
     componentWillUnmount(){
@@ -37,7 +37,7 @@ export default class LoggedInMasterView extends Component {
       
     fetchGeolocationData (some_func) {
       if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition((pos) => { some_func(pos) }, function() {
+        navigator.geolocation.getCurrentPosition((pos) => { some_func(pos) }, function () {
 
           console.log("Could not retrieve user location data");
 
