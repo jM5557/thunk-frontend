@@ -17,7 +17,7 @@ button {
 }
 
 a {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 button {
@@ -25,45 +25,45 @@ button {
 }
 
 .logged-in-view {
-    padding-top: 85px;
-    padding-bottom: 85px;
+  padding-top: 85px;
+  padding-bottom: 85px;
 }
 
 .main-header {
-    background-color: $color-blue;
-    color: #FFF;
-    padding: 25px;
-    text-align: center;
-    position: fixed;
-    left: 0;
-    right: 0;
-    top: 0px;
-    z-index: 999;
+  background-color: $color-blue;
+  color: #fff;
+  padding: 25px;
+  text-align: center;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0px;
+  z-index: 999;
 
-    a {
-        color: #FFF;
-        font-size: 35px;
-    }
+  a {
+    color: #fff;
+    font-size: 35px;
+  }
 }
 
 .main-nav {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background-color: $color-blue;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 999;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: $color-blue;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
 
-    a {
-        font-size: 18px;
-        font-weight: bolder;
-        color: #FFF;
-        margin: 5px;
-        padding: 12px 15px;
-    }
+  a {
+    font-size: 18px;
+    font-weight: bolder;
+    color: #fff;
+    margin: 5px;
+    padding: 12px 15px;
+  }
 }
 
 .login-btn {
@@ -102,8 +102,8 @@ button {
     margin-bottom: 25px;
   }
 
-    &.register .log-in,
-    .register-btn {
+  &.register .log-in,
+  .register-btn {
     color: #70cfec;
     padding: 8px;
     margin: 10px auto 10px auto;
@@ -118,7 +118,7 @@ button {
   }
 
   .form {
-      padding: 10px 10px 10px;
+    padding: 10px 10px 10px;
   }
 }
 
@@ -204,71 +204,69 @@ button {
       font-weight: bolder;
       font-size: 20px;
       padding: 10px;
-    } }
+    }
+  }
 }
 
 .text {
-    font-size: 22px;
-    font-weight: bolder;
-    padding: 15px 10px 15px;
-    margin: 10px auto;
-    background-color: #eee;
-    border-radius: 3px;
+  font-size: 22px;
+  font-weight: bolder;
+  padding: 15px 10px 15px;
+  margin: 10px auto;
+  background-color: #eee;
+  border-radius: 3px;
 }
 
 .report {
-    color: $color-red;
-    border: none;
-    font-weight: bolder;
-    font-size: 20px;
-    opacity: 0.75;
-    padding: 5px 12px;
+  color: $color-red;
+  border: none;
+  font-weight: bolder;
+  font-size: 20px;
+  opacity: 0.75;
+  padding: 5px 12px;
 
-    &:hover {
-        opacity: 1;
-    }
+  &:hover {
+    opacity: 1;
+  }
 }
 
 .post-preview-list {
-
-    .post-preview {
-        margin-bottom: 6px;
-    }
-
+  .post-preview {
+    margin-bottom: 6px;
+  }
 }
 
 .comment-list {
-    padding: 20px 15px;
+  padding: 20px 15px;
 
-    .comment-item {
-        margin-bottom: 5px;
-    }
+  .comment-item {
+    margin-bottom: 5px;
+  }
 }
 
 .comment-item {
-    
-    background-color: #FFF;
-    border: solid thin #aaa;
-    padding: 15px;
-    border-radius: 6px;
-    
-    .text {
-        padding: 15px;
-        background-color: #eee;
-        margin-bottom: 5px;
-        font-size: 18px;
-    }
+  background-color: #fff;
+  border: solid thin #aaa;
+  padding: 15px;
+  border-radius: 6px;
 
-    .report {
-        font-size: 16px;
-    }
+  .text {
+    padding: 15px;
+    background-color: #eee;
+    margin-bottom: 5px;
+    font-size: 18px;
+  }
+
+  .report {
+    font-size: 16px;
+  }
 }
 
 .controls-bar {
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: flex-end;
-    align-items: center;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-end;
+  align-items: center;
 }
 
 .comment-btn {
@@ -366,4 +364,8 @@ button {
   display: flex;
   justify-content: flex-end;
   padding: 1rem;
+}
+
+.page-nav {
+  margin-top: 85px;
 }
