@@ -5,14 +5,9 @@ body {
   font-family: $normal-font;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-header,
-button {
+h1,h2,h3,
+h4,h5,h6,
+header, button {
   font-family: $heavy-font;
 }
 
@@ -25,8 +20,6 @@ button {
 }
 
 .logged-in-view {
-    padding-top: 85px;
-    padding-bottom: 85px;
 }
 
 .main-header {
@@ -34,11 +27,6 @@ button {
     color: #FFF;
     padding: 25px;
     text-align: center;
-    position: fixed;
-    left: 0;
-    right: 0;
-    top: 0px;
-    z-index: 999;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -69,10 +57,6 @@ button {
 }
 
 .main-nav {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
     background-color: $color-blue;
     display: flex;
     justify-content: center;
@@ -390,16 +374,32 @@ a.user-settings {
     }
 }
 
-body {
-    height: 100%;   
-    overflow: hidden;  /*makes the body non-scrollable (we will add scrolling to the sidebar and main content containers)*/
-    margin: 0px;  /*removes default style*/
-    display: flex;  /*enables flex content for its children*/
-    box-sizing: border-box;
+body, html {
+    height: 100%;
 }
 
-.column {
-    height: 100%;  /*allows both columns to span the full height of the browser window*/
+body {
+    margin: 0px;
+    overflow-y: hidden;
+}
+
+.logged-in-view {
     display: flex;
-    flex-direction: column;  /*places the left and right headers above the bottom content*/
+    box-sizing: border-box;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.page-content {
+    overflow-y: scroll;
+    z-index: 999;
+    flex-grow: 1;
+}
+
+.main-header {
+    flex: 0 0 auto;
+}
+
+.main-nav {
+    flex: 0 0 auto;
 }
