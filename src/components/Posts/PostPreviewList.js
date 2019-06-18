@@ -1,5 +1,4 @@
 import React, { Component, Fragment } from 'react';
-import PropTypes from 'prop-types';
 import PostPreview from './PostPreview';
 import Modal from '../Modals/Modal';
 import ModalBackdrop from '../ModalBackdrop/ModalBackdrop';
@@ -36,7 +35,7 @@ class PostPreviewList extends Component {
       }
     ],
     creating: false,
-    confirmReport: false
+    confirm: false
   };
 
   modalCancelHandler = () => {
@@ -51,36 +50,48 @@ class PostPreviewList extends Component {
     this.setState({ creating: true });
   };
 
-  confirmReportHandler = () => {};
+  confirmHandler = () => {
+    this.setState({ confirm: true });
+  };
 
   render() {
     return (
       <Fragment>
-        {this.state.creating && (
+        {this.state.creating && this.state.confirm && (
           <Fragment>
-            <ModalBackdrop onCancel = { this.modalCancelHandler }/>
+            <ModalBackdrop onCancel={this.modalCancelHandler} />
+            <Modal title='Report' canConfirm onConfirm={this.confirmHandler}>
+              <p>Confirm report</p>
+              <button className='modal-btn-confirm'>Confirm</button>
+            </Modal>
+          </Fragment>
+        )}
+
+        {this.state.creating && !this.state.confirm && (
+          <Fragment>
+            <ModalBackdrop onCancel={this.modalCancelHandler} />
             <Modal
-                title='Report'
-                canCancel
-                canReport
-                onCancel={this.modalCancelHandler}
-                onReport={this.confirmReportHandler}
+              title='Report'
+              canCancel
+              canReport
+              onCancel={this.modalCancelHandler}
+              onReport={this.confirmHandler}
             >
-                <h2>Reporting this content for...</h2>
-                <div className='radio-buttons'>
+              <h2>Reporting this content for...</h2>
+              <div className='radio-buttons'>
                 <label>
-                    <input type='radio' />
-                    Hate speech post. Might hurt others
+                  <input type='radio' />
+                  Hate speech post. Might hurt others
                 </label>
                 <label>
-                    <input type='radio' />
-                    Inappropriate post.
+                  <input type='radio' />
+                  Inappropriate post.
                 </label>
                 <label>
-                    <input type='radio' />
-                    Posting personal information.
+                  <input type='radio' />
+                  Posting personal information.
                 </label>
-                </div>
+              </div>
             </Modal>
           </Fragment>
         )}
