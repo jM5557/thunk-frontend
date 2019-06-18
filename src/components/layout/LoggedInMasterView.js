@@ -4,6 +4,8 @@ import PostPreviewList from './../posts/PostPreviewList';
 
 import HeaderComponent from './../partials/header';
 import Navbar from './../partials/navbar';
+import Settings from '../user/Account/Settings';
+import Activity from '../user/Account/Activity';
 
 export default class LoggedInMasterView extends Component {
 
@@ -62,6 +64,8 @@ export default class LoggedInMasterView extends Component {
 
           <div className = "page-content">
             <Switch>
+              <Route path = "/activity" component = { Activity } />
+              <Route path = "/settings" component = { Settings } />
               <Route path = "/" component = { PostPreviewList } />
             </Switch>
           </div>
