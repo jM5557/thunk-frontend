@@ -1,19 +1,31 @@
 import React, { Component } from 'react';
 
-export default class LoggedOutView extends Component {
-  render() {
+let logInForm = function () {
     return (
-      <div className='logged-out-layout'>
-        <div className='logged-out-inner'>
-          <h1>Get Started</h1>
-          <button className='login-btn'>Sign In</button>
-          <button className='login-btn register-btn'>Register</button>
-
-          <a href='#' className='forgot-password'>
-            Forgot your password?
-          </a>
+        <div className = "log-in-form form">
+            <a className = "login-btn" href = "https://google.com">Log In With Google</a>
+            <a className = "login-btn" href = "https://facebook.com">Log In With Facebook</a>
         </div>
-      </div>
     );
-  }
+}
+
+export default class LoggedOutView extends Component {
+
+    constructor (props) {
+        super(props);
+    }
+
+    render() {
+      return (
+        <div className='logged-out-layout'>
+          <div className='logged-out-inner' >
+            
+            <h1>Get Started</h1>
+
+            <div>{ logInForm() }</div>
+
+          </div>
+        </div>
+      );
+    }
 }
