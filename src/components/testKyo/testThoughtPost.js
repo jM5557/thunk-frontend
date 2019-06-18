@@ -1,15 +1,9 @@
 import React from 'react';
 
-
-
 class TestThoughtsPost extends React.Component{
     render(){
       let myUpVote = this.props.myProps.up_vote;
       let myDownVote = this.props.myProps.down_vote;
-
-      // {this.props.thoughts_.map((myThoughts, i) => <TestThoughtPost key = {i} inputPostId = {myThoughts.id} myProps = {myThoughts} {...this.props}/>)}
-
-
       return(
         <div>
         <br/>

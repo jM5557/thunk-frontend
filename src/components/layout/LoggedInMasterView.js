@@ -2,9 +2,7 @@ import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
 
 export default class LoggedInMasterView extends Component {
-
     render() {
-      console.log("I am logged in");
       return (
           <div>
               <p>logged in </p>
@@ -12,7 +10,9 @@ export default class LoggedInMasterView extends Component {
               <button> Thoughts </button>
               </Link>
               <button> Search </button>
+              <Link to ='/create-thought'>
               <button> CreatePost </button>
+              </Link>
               <button> Activities </button>
               <button> DashBoard </button>
 

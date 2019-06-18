@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
 
 export default class Comments extends Component {
-    render() {
-      console.log("This is Comments.js", this.props);
+    render(){
         return (
             <div>
-                <p>This is Comment</p>
+                <p>{this.props.myComment.text}</p>
+                <button>report</button>
             </div>
         )
     }
