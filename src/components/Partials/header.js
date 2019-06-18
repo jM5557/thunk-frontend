@@ -1,21 +1,24 @@
 import React, { Component } from 'react';
 import { withRouter, Link } from 'react-router-dom';
+import SearchBar from '../Search/SearchBar';
 
 class HeaderComponent extends Component {
-  render() {
-    const path = this.props.location.pathname.slice(1);
+  constructor(props) {
+    super(props);
 
+    this.state = {
+      path: props.location.pathname.slice(1)
+    };
+  }
+  render() {
     let headerText = '';
 
-    switch (path) {
+    switch (this.state.path) {
       case 'posts':
         headerText = 'News Feed';
         break;
       case 'activity':
         headerText = 'My Activity';
-        break;
-      case 'search':
-        headerText = 'Search By Tag';
         break;
       default:
         headerText = '';
@@ -23,10 +26,21 @@ class HeaderComponent extends Component {
 
     return (
       <header className='main-header'>
-        <Link to='/' className='logo-top'>
-          Thunk!
+        {this.state.path === 'search' ? (
+          <SearchBar />
+        ) : (
+          <div clasName='header-inner'>
+            <Link to='/' className='logo-top'>
+              Thunk!
+            </Link>
+            <h1>{headerText}</h1>
+          </div>
+        )}
+
+        <Link to='/account' className='user-settings'>
+          <i className='fas fa-cog' />
+          <p>Account Settings</p>
         </Link>
-        <h1>{headerText}</h1>
       </header>
     );
   }

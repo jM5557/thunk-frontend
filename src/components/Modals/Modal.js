@@ -13,7 +13,6 @@ const Modal = props => (
           Report
         </button>
       )}
-
       {props.canCancel && (
         <button className='modal-btn-c' onClick={props.onCancel}>
           Cancel
