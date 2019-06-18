@@ -33,8 +33,8 @@ const PostPreview = props => {
         <button className='comment-btn'>
           <i className='fas fa-comments' />
         </button>
-        <button className='report'>
-          <i class='fas fa-flag' />
+        <button onClick={() => props.startModalHandler()} className='report'>
+          <i className='fas fa-flag' />
         </button>
       </div>
     </div>

@@ -56,7 +56,7 @@ export default class LoggedInMasterView extends Component {
     render() {
       console.log("I am logged in");
       return (
-        <Fragment>
+        <div className = "logged-in-view">
 
           <HeaderComponent />
 
@@ -66,7 +66,7 @@ export default class LoggedInMasterView extends Component {
 
           <Navbar />
         
-        </Fragment>
+        </div>
       )
     }
 }

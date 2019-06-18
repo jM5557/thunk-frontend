@@ -10,7 +10,7 @@ export default class App extends Component {
     return (
       <Router>
         <Switch>
-          <Route path = "/" component = { LoggedOutView } />
+          <Route path = "/login" component = { LoggedOutView } />
           <Route component = { LoggedInMasterView } />
         </Switch>
       </Router>
