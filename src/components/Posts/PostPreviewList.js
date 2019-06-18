@@ -56,31 +56,33 @@ class PostPreviewList extends Component {
   render() {
     return (
       <Fragment>
-        {this.state.creating && <ModalBackdrop />}
         {this.state.creating && (
-          <Modal
-            title='Report'
-            canCancel
-            canReport
-            onCancel={this.modalCancelHandler}
-            onReport={this.confirmReportHandler}
-          >
-            <h2>Reporting this content for...</h2>
-            <div className='radio-buttons'>
-              <label>
-                <input type='radio' />
-                Hate speech post. Might hurt others
-              </label>
-              <label>
-                <input type='radio' />
-                Inappropriate post.
-              </label>
-              <label>
-                <input type='radio' />
-                Posting personal information.
-              </label>
-            </div>
-          </Modal>
+          <Fragment>
+            <ModalBackdrop onCancel = { this.modalCancelHandler }/>
+            <Modal
+                title='Report'
+                canCancel
+                canReport
+                onCancel={this.modalCancelHandler}
+                onReport={this.confirmReportHandler}
+            >
+                <h2>Reporting this content for...</h2>
+                <div className='radio-buttons'>
+                <label>
+                    <input type='radio' />
+                    Hate speech post. Might hurt others
+                </label>
+                <label>
+                    <input type='radio' />
+                    Inappropriate post.
+                </label>
+                <label>
+                    <input type='radio' />
+                    Posting personal information.
+                </label>
+                </div>
+            </Modal>
+          </Fragment>
         )}
         <div className='post-preview-list'>
           {this.state.Posts.map(post => (

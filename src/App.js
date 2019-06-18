@@ -6,12 +6,23 @@ import LoggedOutView from './components/layout/LoggedOutView';
 
 export default class App extends Component {
 
+  constructor (props) {
+    super(props);
+
+    this.state = {
+      isLoggedIn: true
+    }
+  }
+
   render() {
     return (
       <Router>
         <Switch>
-          <Route path = "/login" component = { LoggedOutView } />
-          <Route component = { LoggedInMasterView } />
+            { (!this.state.isLoggedIn) ? (
+              <Route component={ LoggedOutView } />
+            ) : (
+              <Route component = { LoggedInMasterView } />
+            ) }
         </Switch>
       </Router>
     );

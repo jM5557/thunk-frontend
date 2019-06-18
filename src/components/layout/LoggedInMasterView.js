@@ -60,9 +60,11 @@ export default class LoggedInMasterView extends Component {
 
           <HeaderComponent />
 
-          <Switch>
-            <Route path = "/" component = { PostPreviewList } />
-          </Switch>
+          <div className = "page-content">
+            <Switch>
+              <Route path = "/" component = { PostPreviewList } />
+            </Switch>
+          </div>
 
           <Navbar />
         
