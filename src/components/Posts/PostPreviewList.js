@@ -65,7 +65,7 @@ class PostPreviewList extends Component {
 
   render() {
     return (
-      <div>
+      <div className = "post-preview-list">
         {this.state.Posts.map(post => (
           <PostPreview key={post.id} post={post} />
         ))}

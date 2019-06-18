@@ -20,6 +20,27 @@ button {
   cursor: pointer;
 }
 
+.main-header {
+    background-color: $color-blue;
+    color: #FFF;
+    padding: 25px;
+    text-align: center;
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0px;
+    z-index: 9999;
+
+    a {
+        color: #FFF;
+        font-size: 35px;
+    }
+}
+
+#root {
+    padding-top: 80px;
+}
+
 .main-nav {
     position: fixed;
     bottom: 0;
@@ -184,13 +205,16 @@ button {
 }
 
 .post-preview-list {
+
     .post-preview {
         margin-bottom: 6px;
     }
+
 }
 
 .comment-list {
     padding: 20px 15px;
+
     .comment-item {
         margin-bottom: 5px;
     }

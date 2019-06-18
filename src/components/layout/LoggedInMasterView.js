@@ -1,6 +1,8 @@
 import React, { Component, Fragment } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import PostPreviewList from './../posts/PostPreviewList';
+
+import HeaderComponent from './../partials/header';
 import Navbar from './../partials/navbar';
 
 export default class LoggedInMasterView extends Component {
@@ -56,10 +58,10 @@ export default class LoggedInMasterView extends Component {
       return (
         <Fragment>
 
-          
+          <HeaderComponent />
 
           <Switch>
-            <Route path = "/posts" component = { PostPreviewList } />
+            <Route path = "/" component = { PostPreviewList } />
           </Switch>
 
           <Navbar />
