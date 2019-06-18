@@ -54,7 +54,7 @@ export default class LoggedInMasterView extends Component {
     }
 
     render() {
-      console.log(this.state.loc.lat + ", " + this.state.loc.long + " | " + this.state.timestamp);
+      console.log("I am logged in");
       return (
         <Fragment>
 

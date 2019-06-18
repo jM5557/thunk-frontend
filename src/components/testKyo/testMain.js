@@ -1,5 +1,6 @@
 import React from 'react';
 import TestThoughtsPostPreview from './testThoughtsPostPreview';
+import TestThoughtWithComment from './testThoughtWithComment';
 
 
 class TestMain extends React.Component{
@@ -11,6 +12,10 @@ class TestMain extends React.Component{
         <p>----------This is TestMain.js----------</p>
         <TestThoughtsPostPreview {...this.props}/>
         <p>----------This is TestMain.js----------</p>
+
+
+        <p>------Thought with Comment-----</p>
+        <TestThoughtWithComment {...this.props} />
         </div>
       )
     }
