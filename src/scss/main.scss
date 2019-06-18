@@ -191,6 +191,15 @@ button {
   left: 50%;
   transform: translatex(-50%);
   z-index: 999;
+
+  button {
+    margin: auto;
+    border-radius: 10px;
+    font-size: 25px;
+    padding: 0.5rem;
+    color: white;
+    font-weight: 600;
+  }
 }
 
 .modal-header {
@@ -213,11 +222,20 @@ button {
   background: $color-blue;
 }
 
+.modal-btn-confirm {
+  background: $color-blue;
+}
+
 .modal-content {
   padding: 1rem;
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  p {
+    font-size: 20px;
+    padding: 1rem;
+  }
 
   h2 {
     font-size: 25px;
@@ -238,13 +256,4 @@ button {
   display: flex;
   justify-content: flex-end;
   padding: 1rem;
-
-  button {
-    margin: auto;
-    border-radius: 10px;
-    font-size: 25px;
-    padding: 0.5rem;
-    color: white;
-    font-weight: 600;
-  }
 }

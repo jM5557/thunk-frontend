@@ -36,7 +36,7 @@ class PostPreviewList extends Component {
       }
     ],
     creating: false,
-    confirmReport: false
+    confirm: false
   };
 
   modalCancelHandler = () => {
@@ -51,36 +51,50 @@ class PostPreviewList extends Component {
     this.setState({ creating: true });
   };
 
-  confirmReportHandler = () => {};
+  confirmHandler = () => {
+    this.setState({ confirm: true });
+  };
 
   render() {
     return (
       <Fragment>
-        {this.state.creating && <ModalBackdrop />}
-        {this.state.creating && (
-          <Modal
-            title='Report'
-            canCancel
-            canReport
-            onCancel={this.modalCancelHandler}
-            onReport={this.confirmReportHandler}
-          >
-            <h2>Reporting this content for...</h2>
-            <div className='radio-buttons'>
-              <label>
-                <input type='radio' />
-                Hate speech post. Might hurt others
-              </label>
-              <label>
-                <input type='radio' />
-                Inappropriate post.
-              </label>
-              <label>
-                <input type='radio' />
-                Posting personal information.
-              </label>
-            </div>
-          </Modal>
+        {this.state.creating && this.state.confirm && (
+          <Fragment>
+            <ModalBackdrop onCancel={this.modalCancelHandler} />
+            <Modal title='Report' canConfirm onConfirm={this.confirmHandler}>
+              <p>Confirm report</p>
+              <button className='modal-btn-confirm'>Confirm</button>
+            </Modal>
+          </Fragment>
+        )}
+
+        {this.state.creating && !this.state.confirm && (
+          <Fragment>
+            <ModalBackdrop onCancel={this.modalCancelHandler} />
+            <Modal
+              title='Report'
+              canCancel
+              canReport
+              onCancel={this.modalCancelHandler}
+              onReport={this.confirmHandler}
+            >
+              <h2>Reporting this content for...</h2>
+              <div className='radio-buttons'>
+                <label>
+                  <input type='radio' />
+                  Hate speech post. Might hurt others
+                </label>
+                <label>
+                  <input type='radio' />
+                  Inappropriate post.
+                </label>
+                <label>
+                  <input type='radio' />
+                  Posting personal information.
+                </label>
+              </div>
+            </Modal>
+          </Fragment>
         )}
         <div className='post-preview-list'>
           {this.state.Posts.map(post => (
