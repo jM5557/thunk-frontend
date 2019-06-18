@@ -4,24 +4,6 @@ const PostPreview = props => {
   console.log(props);
   const { timestamp, upvotes, downvotes, text } = props.post;
 
-  /* state = {
-    data: {
-      id: 1,
-      timestamp: new Date().toLocaleDateString(),
-      upvotes: 0,
-      downvotes: 0,
-      text: "This is a thought I once had. Isn't it cool huh?",
-      longitude: 297,
-      latitude: 325
-    },
-
-    tags: [
-      { text: 'ThoughtApp' },
-      { text: 'ThunkIsCool' },
-      { text: 'WatIsThunk' }
-    ]
-  }; */
-
   const tags = [
     { text: 'ThoughtApp' },
     { text: 'ThunkIsCool' },
@@ -51,8 +33,8 @@ const PostPreview = props => {
         <button className='comment-btn'>
           <i className='fas fa-comments' />
         </button>
-        <button className='report'>
-          <i class='fas fa-flag' />
+        <button onClick={() => props.startModalHandler()} className='report'>
+          <i className='fas fa-flag' />
         </button>
       </div>
     </div>

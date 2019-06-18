@@ -1,6 +1,8 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import PostPreview from './PostPreview';
+import Modal from '../Modals/Modal';
+import ModalBackdrop from '../ModalBackdrop/ModalBackdrop';
 
 class PostPreviewList extends Component {
   state = {
@@ -31,45 +33,65 @@ class PostPreviewList extends Component {
         text: 'This is in the future and the past',
         longitude: 400,
         latitude: 325
-      },
-      {
-        id: 4,
-        timestamp: new Date().toLocaleDateString(),
-        upvotes: 5,
-        downvotes: 0,
-        text: 'This is in the future and the past',
-        longitude: 400,
-        latitude: 325
-      },
-      {
-        id: 5,
-        timestamp: new Date().toLocaleDateString(),
-        upvotes: 5,
-        downvotes: 0,
-        text: 'This is in the future and the past',
-        longitude: 400,
-        latitude: 325
-      },
-      {
-        id: 6,
-        timestamp: new Date().toLocaleDateString(),
-        upvotes: 5,
-        downvotes: 0,
-        text: 'This is in the future and the past',
-        longitude: 400,
-        latitude: 325
       }
     ],
-    loading: false
+    creating: false,
+    confirmReport: false
   };
+
+  modalCancelHandler = () => {
+    this.setState({ creating: false });
+  };
+
+  modalReportHandler = () => {
+    this.setState({ creating: false });
+  };
+
+  startModalHandler = () => {
+    this.setState({ creating: true });
+  };
+
+  confirmReportHandler = () => {};
 
   render() {
     return (
-      <div>
-        {this.state.Posts.map(post => (
-          <PostPreview key={post.id} post={post} />
-        ))}
-      </div>
+      <Fragment>
+        {this.state.creating && <ModalBackdrop />}
+        {this.state.creating && (
+          <Modal
+            title='Report'
+            canCancel
+            canReport
+            onCancel={this.modalCancelHandler}
+            onReport={this.confirmReportHandler}
+          >
+            <h2>Reporting this content for...</h2>
+            <div className='radio-buttons'>
+              <label>
+                <input type='radio' />
+                Hate speech post. Might hurt others
+              </label>
+              <label>
+                <input type='radio' />
+                Inappropriate post.
+              </label>
+              <label>
+                <input type='radio' />
+                Posting personal information.
+              </label>
+            </div>
+          </Modal>
+        )}
+        <div className='post-preview-list'>
+          {this.state.Posts.map(post => (
+            <PostPreview
+              key={post.id}
+              post={post}
+              startModalHandler={this.startModalHandler}
+            />
+          ))}
+        </div>
+      </Fragment>
     );
   }
 }
