@@ -42,8 +42,9 @@ export default class CreateThought extends Component {
           onChange={this.getInputText}
           placeholder='Type title'
         />
-        <textarea placeholder='Write your thoughts...' />
+        <textarea placeholder='Write your thoughts...' rows='15' />
         <input
+          className='tags-box'
           value={this.state.inputHashTagsHolder_}
           onChange={this.getInputHashTags}
           placeholder='type has tags with #'
@@ -60,7 +61,7 @@ export default class CreateThought extends Component {
             this.state.inputTimeStamp_
           )}
         >
-          submit
+          Post
         </button>
       </div>
     );
