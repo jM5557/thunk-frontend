@@ -9,7 +9,7 @@ export default class CommentList extends Component {
     render() {
         return (
             <div className = "comment-list">
-                { this.props.list.map((c, i ) => {
+                { this.props.commentList.map((c, i ) => {
                     return (
 
                         <SingleComment key = {i} data = { c } />

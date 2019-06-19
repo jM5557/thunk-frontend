@@ -4,39 +4,16 @@ import Modal from '../Modals/Modal';
 import ModalBackdrop from '../ModalBackdrop/ModalBackdrop';
 
 class PostPreviewList extends Component {
-  state = {
-    Posts: [
-      {
-        id: 1,
-        timestamp: new Date().toLocaleDateString(),
-        upvotes: 0,
-        downvotes: 0,
-        text: "This is a thought I once had. Isn't it cool huh?",
-        longitude: 297,
-        latitude: 325
-      },
-      {
-        id: 2,
-        timestamp: new Date().toLocaleDateString(),
-        upvotes: 9,
-        downvotes: 0,
-        text: 'This is a test that will hopefully work in time',
-        longitude: 567,
-        latitude: 325
-      },
-      {
-        id: 3,
-        timestamp: new Date().toLocaleDateString(),
-        upvotes: 5,
-        downvotes: 0,
-        text: 'This is in the future and the past',
-        longitude: 400,
-        latitude: 325
-      }
-    ],
-    creating: false,
-    confirm: false
-  };
+  constructor (props) {
+    
+    super(props);
+
+    this.state = {
+        Posts: props.postPreviewList,
+        creating: false,
+        confirm: false
+    };
+  }
 
   modalCancelHandler = () => {
     this.setState({ creating: false });

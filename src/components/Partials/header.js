@@ -37,7 +37,7 @@ class HeaderComponent extends Component {
           </div>
         )}
 
-        <Link to = "/setting" className = "user-settings">
+        <Link to = "/settings" className = "user-settings">
             <i className="fas fa-cog"></i>
             <p>Account Settings</p>
         </Link>

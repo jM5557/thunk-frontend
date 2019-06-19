@@ -7,6 +7,7 @@ import HeaderComponent from './../partials/header';
 import Navbar from './../partials/navbar';
 import Settings from '../user/Account/Settings';
 import Activity from '../user/Account/Activity';
+import Home from '../Home';
 
 export default class LoggedInMasterView extends Component {
   constructor(props) {
@@ -57,7 +58,7 @@ export default class LoggedInMasterView extends Component {
   }
 
     render() {
-      
+
       return (
         
         <div className = "logged-in-view">
@@ -69,7 +70,7 @@ export default class LoggedInMasterView extends Component {
               <Route path='/search' component={Search} />
               <Route path = "/activity" component = { Activity } />
               <Route path = "/settings" component = { Settings } />
-              <Route path = "/" component = { PostPreviewList } />
+              <Route path = "/" component = { Home } />
             </Switch>
           </div>
 
