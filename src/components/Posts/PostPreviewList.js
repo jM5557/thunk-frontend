@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import PostPreview from './PostPreview';
-import Modal from '../Modals/Modal';
-import ModalBackdrop from '../ModalBackdrop/ModalBackdrop';
+import Modal from '../modals/Modal';
+import ModalBackdrop from '../modalBackdrop/ModalBackdrop';
 
 class PostPreviewList extends Component {
   constructor (props) {

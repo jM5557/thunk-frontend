@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import PostPreviewList from '../posts/PostPreviewList';
 import Search from '../Search/Search';
@@ -60,22 +60,23 @@ export default class LoggedInMasterView extends Component {
     render() {
 
       return (
-        
+    
         <div className = "logged-in-view">
+            <p>This is LoggedInMasterView</p>
+            
+            <HeaderComponent />
 
-          <HeaderComponent />
+            <div className = "page-content">
+              <Switch>
+                <Route path='/search' component={Search} />
+                <Route path = "/activity" component = { Activity } />
+                <Route path = "/settings" component = { Settings } />
+                <Route path = "/" component = { Home } />
+              </Switch>
+            </div>
 
-          <div className = "page-content">
-            <Switch>
-              <Route path='/search' component={Search} />
-              <Route path = "/activity" component = { Activity } />
-              <Route path = "/settings" component = { Settings } />
-              <Route path = "/" component = { Home } />
-            </Switch>
-          </div>
+            <Navbar />
 
-          <Navbar />
-        
         </div>
     );
   }
