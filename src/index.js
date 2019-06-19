@@ -4,10 +4,10 @@ import App from './components/App';
 import {Provider} from 'react-redux';
 import myStore from './store';
 
-const router =(
+const router = (
   <Provider store = {myStore}>
-    <App/>
+    <App />
   </Provider>
-)
+);
 
 render (router, document.getElementById('root'));

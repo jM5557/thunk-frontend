@@ -22,18 +22,15 @@ export function reportThought(inputPostId)
     inputPostId,
   }
 }
+//remove comment
 
-export function createThought(inputPostId, inputText, inputUpVote, inputDownVote, inputReportCount, inputHashTags, inputTimeStamp)
+export function createThought(inputPostId, inputText, inputTag)
 {
   return {
     type: 'CREATE_THOUGHT',
     inputPostId,
     inputText,
-    inputUpVote,
-    inputDownVote,
-    inputReportCount,
-    inputHashTags,
-    inputTimeStamp,
+    inputTag,
   }
 }
 

@@ -1,6 +1,6 @@
 function createComments(state = [], action)
 {
-  // inputCommentId, inputText, inputMarkOwner)
+  console.log("comments", state);
   switch(action.type)
   {
     case 'CREATE_COMMENT':

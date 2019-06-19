@@ -23,12 +23,19 @@ class SingleThought extends Component {
     render() {
       let myId = this.props.match.params.id;
       let myThought = this.props.thoughts_[myId];
-      let myComment = this.props.comments_[myThought.id];
-        return (
+      let myComment = this.props.comments_[myThought.id]||[];
+
+      console.log(this.props);
+      return (
+      <div>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
             <div className = "post-preview">
-            <p>THIS IS SINGLE</p>
-                <p>inputPostId:{myThought.id} </p>
-                <div className = "details-top">
+                  <div className = "details-top">
                     <span className = "timestamp">
                     {myThought.time_stamp}
                     </span>
@@ -49,12 +56,12 @@ class SingleThought extends Component {
                         <button onClick = {this.props.downVote.bind(null, myThought.id)} className = "vote down">Down</button>
                           <span className = "votes">{myThought.down_vote}</span>
                         <Link to = '/thoughts'>
-                        <button> back</button>
+                        <button> bAAck</button>
                         </Link>
 
                     </div>
-                    <button onClick = {this.props.reportThought.bind(null, myThought.id)}className = "report">Flag</button>
-                    <span className = "votes"> {myThought.report_count} </span>
+                    <button onClick={() => this.props.startModalHandler()} className='report'>
+                      <i className='fas fa-flag' /></button>
                 </div>
 
                 <div>
@@ -62,6 +69,7 @@ class SingleThought extends Component {
                 </div>
                 <input value = {this.state.inputTextHolder_} onChange = {this.getInputText} placeholder = "type comment"/>
                 <button onClick = {this.props.createComment.bind(null, myId, this.state.inputTextHolder_, this.state.inputMarkOwner_)}>submit</button>
+            </div>
             </div>
         )
     }

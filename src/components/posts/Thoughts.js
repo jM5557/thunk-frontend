@@ -4,12 +4,17 @@ import ThoughtPreview from './ThoughtPreview';
 export default class Thoughts extends Component {
     render() {
         return (
+          <div className = "logged-in-view">
             <div>
-                <p>{this.props.thoughts_.length}</p>
-                <p>This is Thoughts</p>
-                {this.props.thoughts_.map((myThoughts, i) => <ThoughtPreview key = {i} inputPostId = {myThoughts.id} myProps = {myThoughts} {...this.props}/>)}
-
+                {this.props.thoughts_.map((myThoughts, i) =>
+                  <ThoughtPreview
+                    key = {i}
+                    inputPostId = {myThoughts.id}
+                    myProps = {myThoughts} {...this.props}
+                    startModalHandler = {this.props.startModalHandler}
+                  />)}
             </div>
+          </div>
         )
     }
 }
