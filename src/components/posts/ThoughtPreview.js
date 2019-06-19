@@ -3,6 +3,7 @@ import {Link} from 'react-router-dom';
 
 export default class ThoughtPreview extends Component {
     render() {
+      console.log("ThoughtsPreview.js", this.props);
       let myThought = this.props.myProps;
         return (
             <div className = "post-preview">
@@ -29,7 +30,7 @@ export default class ThoughtPreview extends Component {
                         <Link to = {`/thoughts/${myThought.id}`}>
                         <button className='comment-btn'><i className='fas fa-comments' /></button>
                         </Link>
-                        <span className = "votes"> {this.props.comments_[this.props.myProps.post.id].length} </span>
+                        <span className = "votes"> {myThought.comment.length} </span>
                     </div>
                     <button onClick={() => this.props.startModalHandler()} className='report'> <i className='fas fa-flag' /> </button>
                 </div>
@@ -37,3 +38,5 @@ export default class ThoughtPreview extends Component {
         )
     }
 }
+//{this.props.myProps.hash_tag.map((myTag, i) => <span key = {i}>#{myTag} </span> )}
+//<span className = "votes"> {this.props.comments_[this.props.myProps.id].length} </span>

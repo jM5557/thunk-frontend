@@ -44,3 +44,10 @@ export function createComment(inputPostId, inputText, inputMarkOwner)
     inputMarkOwner,
   }
 }
+
+export const getThoughtsAction = thoughts_ => {
+  return {
+    type: "GET_THOUGHTS",
+    thoughts_,
+  }
+}

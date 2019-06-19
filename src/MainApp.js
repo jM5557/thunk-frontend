@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import './scss/main.scss';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import LoggedInMasterView from './components/layout/LoggedInMasterView';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import LoggedOutView from './components/layout/LoggedOutView';
 import App from './components/App';
 
@@ -17,7 +16,6 @@ export default class MainApp extends Component {
   render() {
     return (
       <Router>
-        <Switch>
           {!this.state.isLoggedIn ? (
             <Route path = "/" component={LoggedOutView} />
           ) : (
@@ -25,7 +23,6 @@ export default class MainApp extends Component {
               <Route component={ App } />
             </div>
           )}
-        </Switch>
       </Router>
     );
   }
