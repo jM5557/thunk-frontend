@@ -4,10 +4,22 @@ import {createStore} from 'redux';
 import rootReducer from './reducers/index';
 import thoughtsData from './data/thoughts';
 import commentData from './data/comments';
+import axios from 'axios';
+
+let thoughts_data = [];
+
+axios.get('https://thunk-api-19.herokuapp.com/api/v1/post')
+  .then(( response ) => {
+    thoughts_data = response.data;
+    console.log(response.data);
+  })
+  .catch( (err) => {
+    console.log('Fail');
+  } )
 
 const defaultState =
 {
-  thoughtsReducer: thoughtsData,
+  thoughtsReducer: thoughts_data,
   commentsReducer: commentData,
 };
 
