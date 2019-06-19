@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { withRouter, Link } from 'react-router-dom';
-import SearchBar from '../Search/SearchBar';
+import SearchBar from '../search/SearchBar';
 
 class HeaderComponent extends Component {
   constructor(props) {

@@ -32,6 +32,10 @@ function thoughtsReducer(state = [], action)
         hash_tag: action.inputHashTags,
         time_stamp: action.inputTimeStamp,
       }]
+
+    case 'GET_THOUGHTS' :
+      return action.thoughts_
+
     default :
       return state;
   }
