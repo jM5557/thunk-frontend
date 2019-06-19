@@ -1,28 +1,28 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 
 export default class CreateThought extends Component {
-  constructor(props){
-    super(props)
-    this.state ={
+  constructor(props) {
+    super(props);
+    this.state = {
       inputPostId: this.props.thoughts_.length,
-      inputUpVote_:0,
-      inputDownVote_:0,
-      inputReportCount_:0,
-      inputTimeStamp_:"0 min ago",
-      inputMarkOwner_:true,
-      inputText_:"",
-      inputTextHolder_ : "",
-      inputHashTagsHolder_:[],
-    }
+      inputUpVote_: 0,
+      inputDownVote_: 0,
+      inputReportCount_: 0,
+      inputTimeStamp_: '0 min ago',
+      inputMarkOwner_: true,
+      inputText_: '',
+      inputTextHolder_: '',
+      inputHashTagsHolder_: []
+    };
   }
 
-  getInputText = (event) => {
-    this.setState({ inputTextHolder_: event.target.value })
-  }
+  getInputText = event => {
+    this.setState({ inputTextHolder_: event.target.value });
+  };
 
-  getInputHashTags = (event) => {
-    this.setState({ inputHashTagsHolder_: [event.target.value] })
-  }
+  getInputHashTags = event => {
+    this.setState({ inputHashTagsHolder_: [event.target.value] });
+  };
   // btnSubmit = () =>
   // {
   //
@@ -32,30 +32,39 @@ export default class CreateThought extends Component {
   //     }) )
   //
   // }
-    render(){
-        return (
-            <div>
-            <br/>    <br/>    <br/>    <br/>    <br/>    <br/>
-
-                <p> Create Thought page </p>
-                <input value = {this.state.inputTextHolder_} onChange = {this.getInputText} placeholder = "type your thought"/>
-                <br/>
-                <input value = {this.state.inputHashTagsHolder_} onChange = {this.getInputHashTags} placeholder = "type has tags with #"/>
-                <button onClick = {this.props.createThought.bind(null,
-                  this.state.inputPostId,
-                  this.state.inputTextHolder_,
-                  this.state.inputUpVote_,
-                  this.state.inputDownVote_,
-                  this.state.inputReportCount_,
-                  this.state.inputHashTagsHolder_,
-                  this.state.inputTimeStamp_
-                  )}>
-                  submit
-                </button>
-
-            </div>
-        )
-    }
+  render() {
+    return (
+      <div className='create-thought-wrapper'>
+        <h2> Create a Thought</h2>
+        <input
+          className='thought-title'
+          value={this.state.inputTextHolder_}
+          onChange={this.getInputText}
+          placeholder='Type title'
+        />
+        <textarea placeholder='Write your thoughts...' />
+        <input
+          value={this.state.inputHashTagsHolder_}
+          onChange={this.getInputHashTags}
+          placeholder='type has tags with #'
+        />
+        <button
+          onClick={this.props.createThought.bind(
+            null,
+            this.state.inputPostId,
+            this.state.inputTextHolder_,
+            this.state.inputUpVote_,
+            this.state.inputDownVote_,
+            this.state.inputReportCount_,
+            this.state.inputHashTagsHolder_,
+            this.state.inputTimeStamp_
+          )}
+        >
+          submit
+        </button>
+      </div>
+    );
+  }
 }
 //export function createThought(inputPostId, inputText, inputTag)
 

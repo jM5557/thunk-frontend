@@ -1,17 +1,16 @@
 import React, { Component, Fragment } from 'react';
 import PostPreview from './PostPreview';
 import Modal from '../modals/Modal';
-import ModalBackdrop from '../modalBackdrop/ModalBackdrop';
+import ModalBackdrop from '../modalbackdrop/ModalBackdrop';
 
 class PostPreviewList extends Component {
-  constructor (props) {
-    
+  constructor(props) {
     super(props);
 
     this.state = {
-        Posts: props.postPreviewList,
-        creating: false,
-        confirm: false
+      Posts: props.postPreviewList,
+      creating: false,
+      confirm: false
     };
   }
 

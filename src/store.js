@@ -1,4 +1,4 @@
-import {createStore} from 'redux';
+import { createStore } from 'redux';
 // import {syncHistoryWithStore} from 'react-router-redux';
 // import {browserHistory} from 'react-router';
 import rootReducer from './reducers/index';
@@ -8,21 +8,20 @@ import axios from 'axios';
 
 let thoughts_data = [];
 
-axios.get('https://thunk-api-19.herokuapp.com/api/v1/post')
-  .then(( response ) => {
+axios
+  .get('https://thunk-api-19.herokuapp.com/api/v1/user/1')
+  .then(response => {
     thoughts_data = response.data;
     console.log(response.data);
   })
-  .catch( (err) => {
+  .catch(err => {
     console.log('Fail');
-  } )
+  });
 
-const defaultState =
-{
-  thoughtsReducer: thoughts_data,
-  commentsReducer: commentData,
+const defaultState = {
+  thoughtsReducer: thoughtsData,
+  commentsReducer: commentData
 };
-
 
 const store = createStore(rootReducer, defaultState);
 // export const history = syncHistoryWithStore(browserHistory, store);

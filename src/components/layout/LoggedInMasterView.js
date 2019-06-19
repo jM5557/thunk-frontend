@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import PostPreviewList from '../posts/PostPreviewList';
-import Search from '../Search/Search';
+import Search from '../search/Search';
 
-import HeaderComponent from './../partials/header';
-import Navbar from './../partials/navbar';
+import HeaderComponent from '../partials/Header';
+import Navbar from '../partials/Navbar';
 import Settings from '../user/Account/Settings';
 import Activity from '../user/Account/Activity';
 import Home from '../Home';
@@ -57,27 +57,24 @@ export default class LoggedInMasterView extends Component {
     }
   }
 
-    render() {
+  render() {
+    return (
+      <div className='logged-in-view'>
+        <p>This is LoggedInMasterView</p>
 
-      return (
-    
-        <div className = "logged-in-view">
-            <p>This is LoggedInMasterView</p>
-            
-            <HeaderComponent />
+        <HeaderComponent />
 
-            <div className = "page-content">
-              <Switch>
-                <Route path='/search' component={Search} />
-                <Route path = "/activity" component = { Activity } />
-                <Route path = "/settings" component = { Settings } />
-                <Route path = "/" component = { Home } />
-              </Switch>
-            </div>
-
-            <Navbar />
-
+        <div className='page-content'>
+          <Switch>
+            <Route path='/search' component={Search} />
+            <Route path='/activity' component={Activity} />
+            <Route path='/settings' component={Settings} />
+            <Route path='/' component={Home} />
+          </Switch>
         </div>
+
+        <Navbar />
+      </div>
     );
   }
 }

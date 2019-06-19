@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { withRouter, Link } from 'react-router-dom';
-import SearchBar from '../Search/SearchBar';
+import SearchBar from '../search/SearchBar';
 
 class HeaderComponent extends Component {
   constructor(props) {
@@ -37,9 +37,9 @@ class HeaderComponent extends Component {
           </div>
         )}
 
-        <Link to = "/settings" className = "user-settings">
-            <i className="fas fa-cog"></i>
-            <p>Account Settings</p>
+        <Link to='/settings' className='user-settings'>
+          <i className='fas fa-cog' />
+          <p>Account Settings</p>
         </Link>
       </header>
     );
