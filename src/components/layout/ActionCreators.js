@@ -1,4 +1,4 @@
-//incrememt likea_bos
+//increment like_a_bos
 
 export function upVote(inputPostId)
 {

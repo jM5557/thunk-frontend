@@ -1,15 +1,16 @@
 import React,{Fragment} from 'react';
-import LoggedOutView from './layout/LoggedOutView';
-import LoggedInMasterView from './layout/LoggedInMasterView';
 import Thoughts from './posts/Thoughts';
 import SingleThought from './posts/SingleThought';
 import CreateThought from './posts/CreateThought';
-import Header from './partials/Header';
-import Navbar from './partials/Navbar';
+import HeaderComponent from './partials/header';
+import Navbar from './partials/navbar';
+
 import '../scss/main.scss';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Modal from './modals/Modal';
 import ModalBackdrop from './modalBackdrop/ModalBackdrop';
+import Settings from './user/Account/Settings';
+import Activity from './user/Account/Activity';
 
 class Main extends React.Component{
   state = {
@@ -35,9 +36,8 @@ class Main extends React.Component{
     console.log("MAIN");
     return(
       <Router>
-        <Header />
-          <Switch>
-          <Fragment>
+        <HeaderComponent />
+        <div className = "page-content">
             {this.state.creating_ && <ModalBackdrop />}
             {this.state.creating_ && (
               <Modal title='Report' canCancel canReport onCancel={this.modalCancelHandler} onReport={this.confirmReport_Handler} >
@@ -50,8 +50,8 @@ class Main extends React.Component{
               </Modal>
               )}
 
-            <Route exact path = "/" component = {()=> <LoggedOutView {...this.props}/>}/>
-            <Route exact path = "/main" component = {()=>
+          <Switch>
+            <Route exact path = "/" component = {()=>
                 <Thoughts
                 startModalHandler = {this.startModalHandler}
                 {...this.props}/>} />
@@ -64,12 +64,14 @@ class Main extends React.Component{
                 startModalHandler = {this.startModalHandler}
                 {...this.props}/>} />
 
-            <Route exact path = "/create-thought" component = {()=>
+            <Route exact path = "/activity" component = { Activity }  />
+
+            <Route exact path = "/create/thought" component = {()=>
               <CreateThought {...this.props}/>}/>
-            <Route exact path = "/css" component = {()=>
-              <LoggedInMasterView {...this.props}/>}/>
-          </Fragment>
+
+            <Route exact path = "/settings" component = { Settings }/>
           </Switch>
+          </div>
         <Navbar/>
       </Router>
       )

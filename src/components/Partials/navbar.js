@@ -6,12 +6,12 @@ export default class Navbar extends Component {
     return (
       <nav className='main-nav'>
         <Link to='/'>
-          <i class='fas fa-home' />
+          <i className='fas fa-home' />
         </Link>
         <Link to='/search'>
           <i className='fas fa-search' />
         </Link>
-        <Link to='/add'>
+        <Link to='/create/thought'>
           <i className='fas fa-plus-square' />
         </Link>
         <Link to='/activity'>

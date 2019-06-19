@@ -29,7 +29,7 @@ class HeaderComponent extends Component {
         {this.props.location.pathname.slice(1) === 'search' ? (
           <SearchBar />
         ) : (
-          <div clasName='header-inner'>
+          <div className='header-inner'>
             <Link to='/' className='logo-top'>
               Thunk!
             </Link>

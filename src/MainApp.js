@@ -3,8 +3,9 @@ import './scss/main.scss';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import LoggedInMasterView from './components/layout/LoggedInMasterView';
 import LoggedOutView from './components/layout/LoggedOutView';
+import App from './components/App';
 
-export default class App extends Component {
+export default class MainApp extends Component {
   constructor(props) {
     super(props);
 
@@ -18,9 +19,11 @@ export default class App extends Component {
       <Router>
         <Switch>
           {!this.state.isLoggedIn ? (
-            <Route component={LoggedOutView} />
+            <Route path = "/" component={LoggedOutView} />
           ) : (
-            <Route component={LoggedInMasterView} />
+            <div className = "logged-in-view">
+              <Route component={ App } />
+            </div>
           )}
         </Switch>
       </Router>
