@@ -55,7 +55,7 @@ export default class LoggedInMasterView extends Component {
     }
   }
 
-    render() {
+  render() {
 
       return (
 
@@ -75,7 +75,17 @@ export default class LoggedInMasterView extends Component {
 
             <Navbar />
 
+        <div className='page-content'>
+          <Switch>
+            <Route path='/search' component={Search} />
+            <Route path='/activity' component={Activity} />
+            <Route path='/settings' component={Settings} />
+            <Route path='/' component={Home} />
+          </Switch>
         </div>
+
+        <Navbar />
+      </div>
     );
   }
 }

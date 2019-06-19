@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import ThoughtPreview from './ThoughtPreview';
 
 export default class Thoughts extends Component {
