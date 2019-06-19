@@ -10,7 +10,7 @@ export default class Thoughts extends Component {
             {this.props.thoughts_.map((myThoughts, i) =>
               <ThoughtPreview
                 key = {i}
-                inputPostId = {myThoughts.id}
+                index = {i}
                 myProps = {myThoughts} {...this.props}
                 startModalHandler = {this.props.startModalHandler}
               />)}

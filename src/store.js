@@ -11,8 +11,7 @@ import {getThoughtsAction} from './components/layout/ActionCreators'
 
 export const getThoughts = () => {
   return async (dispatch) => {
-    const {data} = await axios.get('https://thunk-api-19.herokuapp.com/api/v1/post')
-    console.log("DATA", data);
+    const {data} = await axios.get('https://thunk-api-19.herokuapp.com/api/v1/post/thought')
     dispatch(getThoughtsAction(data));
   }
 }

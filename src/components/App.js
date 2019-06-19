@@ -5,7 +5,6 @@ import {getThoughts} from '../store'
 import Main from './Main';
 
 function mapStateToProps(state){
-  console.log("here",state.thoughtsReducer);
   return{
     thoughts_: state.thoughtsReducer,
     comments_: state.commentsReducer,

@@ -2,6 +2,7 @@ import React from 'react';
 import Thoughts from './posts/Thoughts';
 import SingleThought from './posts/SingleThought';
 import CreateThought from './posts/CreateThought';
+import PostPreviewList from './posts/PostPreviewList';
 import HeaderComponent from './partials/Header';
 import Navbar from './partials/Navbar';
 import '../scss/main.scss';
@@ -75,6 +76,7 @@ class Main extends React.Component{
               <CreateThought {...this.props}/>}/>
 
             <Route exact path = "/settings" component = { Settings }/>
+            <Route exact path = "/pp" component = { PostPreviewList }/>
           </Switch>
           </div>
         <Navbar/>
