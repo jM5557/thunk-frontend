@@ -6,12 +6,14 @@ export default class Thoughts extends Component {
         return (
           <div className = "thoughts-list">
             {
+              
               this.props.thoughts_.map((myThoughts, i) => {
+                
               return (
               <div className = "thought-item">
                 <ThoughtPreview
                   key = {i}
-                  inputPostId = {myThoughts.id}
+                  inputPostId = {myThoughts.post.id}
                   myProps = {myThoughts} {...this.props}
                   startModalHandler = {this.props.startModalHandler}
                 />
