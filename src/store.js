@@ -7,10 +7,12 @@ import commentData from './data/comments';
 import axios from 'axios';
 
 let thoughts_data = [];
+let id = [];
 
-axios.get('https://thunk-api-19.herokuapp.com/api/v1/post')
+axios.get('https://thunk-api-19.herokuapp.com/api/v1/user/')
   .then(( response ) => {
     thoughts_data = response.data;
+    
     console.log(response.data);
   })
   .catch( (err) => {
@@ -19,7 +21,7 @@ axios.get('https://thunk-api-19.herokuapp.com/api/v1/post')
 
 const defaultState =
 {
-  thoughtsReducer: thoughts_data,
+  thoughtsReducer: thoughtsData,
   commentsReducer: commentData,
 };
 
