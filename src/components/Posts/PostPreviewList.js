@@ -4,7 +4,8 @@ import Modal from '../modals/Modal';
 import ModalBackdrop from '../modalbackdrop/ModalBackdrop';
 
 class PostPreviewList extends Component {
-  constructor(props) {
+  constructor (props) {
+
     super(props);
 
     this.state = {

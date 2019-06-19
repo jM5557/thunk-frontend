@@ -13,8 +13,8 @@ export default class Thoughts extends Component {
               return (
               <div className = "thought-item">
                 <ThoughtPreview
-                  key = {i}
-                  inputPostId = {myThoughts.post.id}
+                  key = {myThoughts.post.id}
+                  index = {i}
                   myProps = {myThoughts} {...this.props}
                   startModalHandler = {this.props.startModalHandler}
                 />
