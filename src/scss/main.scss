@@ -244,15 +244,11 @@ button {
   }
 }
 
-.comment-list {
+/* .comment-list {
   padding: 20px 15px;
+} */
 
-  .comment-item {
-    margin-bottom: 5px;
-  }
-}
-
-.comment-item {
+/* .comment-item {
   background-color: #fff;
   border: solid thin #aaa;
   padding: 15px;
@@ -264,12 +260,8 @@ button {
     margin-bottom: 5px;
     font-size: 18px;
   }
-
-  .report {
-    font-size: 16px;
-  }
 }
-
+ */
 .controls-bar {
   display: flex;
   flex-flow: row wrap;
@@ -609,4 +601,34 @@ body {
 .test {
   display: flex;
   justify-content: center;
+
+  .comment-list {
+    padding: 20px 15px;
+  }
+
+  .comment-item {
+    display: flex;
+    justify-content: space-between;
+    background-color: #fff;
+    border: solid thin #aaa;
+    padding: 15px;
+    border-radius: 6px;
+    margin-top: 1rem;
+
+    button {
+      font-size: 15px;
+      font-weight: 545;
+      background-color: $color-blue;
+      color: white;
+      padding: 7px 17px;
+      border-radius: 8px;
+    }
+
+    .text {
+      padding: 15px;
+      background-color: #eee;
+      margin-bottom: 5px;
+      font-size: 18px;
+    }
+  }
 }
