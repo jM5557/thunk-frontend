@@ -111,16 +111,6 @@ class Main extends React.Component {
             />
             <Route
               exact
-              path='/thoughts/:id'
-              component={() => (
-                // <SingleThought
-                //   startModalHandler={this.startModalHandler}
-                //   {...this.props}
-                // />
-              )}
-            />
-            <Route
-              exact
               path='/thoughts'
               component={() => (
                 <Thoughts
