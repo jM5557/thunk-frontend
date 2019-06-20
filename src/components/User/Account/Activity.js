@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react';
-import Thoughts from '../../posts/Thoughts';
+import Thoughts from '../../Posts/Thoughts';
 import Comments from '../../../data/comments';
-import CommentList from '../../comments/CommentList';
+import CommentList from '../../Comments/CommentList';
 
 export default class Activity extends Component {
   constructor(props) {
