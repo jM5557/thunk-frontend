@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import Search from '../search/Search';
-import HeaderComponent from './../partials/Header';
+import HeaderComponent from './../partials/header';
 import Navbar from './../partials/Navbar';
 import Settings from '../user/Account/Settings';
 import Activity from '../user/Account/Activity';
@@ -56,24 +56,22 @@ export default class LoggedInMasterView extends Component {
   }
 
   render() {
+    return (
+      <div className='logged-in-view'>
+        <p>This is LoggedInMasterView</p>
 
-      return (
+        <HeaderComponent />
 
-        <div className = "logged-in-view">
-            <p>This is LoggedInMasterView</p>
+        <div className='page-content'>
+          <Switch>
+            <Route path='/search' component={Search} />
+            <Route path='/activity' component={Activity} />
+            <Route path='/settings' component={Settings} />
+            <Route path='/' component={Home} />
+          </Switch>
+        </div>
 
-            <HeaderComponent />
-
-            <div className = "page-content">
-              <Switch>
-                <Route path='/search' component={Search} />
-                <Route path = "/activity" component = { Activity } />
-                <Route path = "/settings" component = { Settings } />
-                <Route path = "/" component = { Home } />
-              </Switch>
-            </div>
-
-            <Navbar />
+        <Navbar />
 
         <div className='page-content'>
           <Switch>
