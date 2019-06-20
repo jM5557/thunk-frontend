@@ -2,12 +2,12 @@ import React, { Fragment } from 'react';
 import Thoughts from './posts/Thoughts';
 import SingleThought from './posts/SingleThought';
 import CreateThought from './posts/CreateThought';
-import HeaderComponent from './partials/header';
-import Navbar from './partials/navbar';
+import HeaderComponent from './partials/Header';
+import Navbar from './partials/Navbar';
 import '../scss/main.scss';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Modal from './modals/Modal';
-import ModalBackdrop from './modalBackdrop/ModalBackdrop';
+import ModalBackdrop from './modalbackdrop/ModalBackdrop';
 import Settings from './user/Account/Settings';
 import Activity from './user/Account/Activity';
 import thoughts from '../data/thoughts';
@@ -39,16 +39,14 @@ class Main extends React.Component {
       confirmReport_: false,
       creating_: false
     });
+  };
+
+  componentDidMount() {
+    this.props.getThoughts();
   }
 
-  componentDidMount()
-  {
-    this.props.getThoughts()
-  }
-
-  render(){
-
-    return(
+  render() {
+    return (
       <Router>
         <HeaderComponent />
         <div className='page-content'>
