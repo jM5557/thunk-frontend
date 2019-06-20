@@ -24,7 +24,8 @@
     "test": "react-scripts test",
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "deploy": "bash script/deploy"
   },
   "repository": {
     "type": "git",
