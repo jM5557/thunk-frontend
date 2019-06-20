@@ -3,7 +3,7 @@ import Thoughts from './posts/Thoughts';
 import SingleThought from './posts/SingleThought';
 import CreateThought from './posts/CreateThought';
 import HeaderComponent from './partials/Header';
-import Navbar from './partials/Navbar';
+import Navbar from './partials/navbar';
 import '../scss/main.scss';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Modal from './modals/Modal';

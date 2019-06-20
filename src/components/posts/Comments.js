@@ -5,7 +5,7 @@ export default class Comments extends Component {
     return (
       <div>
         <p>{this.props.myComment.text}</p>
-        <button>report</button>
+        <button>rep</button>
       </div>
     );
   }

@@ -21,32 +21,32 @@ class SingleThought extends Component {
     this.setState(state => ({ inputText_: state.inputTextHolder_ }));
   };
   render() {
-    let myId = Number(this.props.match.params.id);
-    let thoughts = this.props.thoughts_;
-    let myThought;
+     let myId = Number(this.props.match.params.id);
+     let thoughts = this.props.thoughts_;
+     let myThought;
 
-    thoughts.map((x, i) => {
-      console.log(x.post.id, myId);
-      if (x.post.id === myId) {
-        console.log('Found it!: ', myId, x);
-        myThought = x;
-        console.log(this.props.thoughts_[0].post.text);
-      }
-    });
+     thoughts.map((x, i) =>{
+       console.log(x.post.id,myId);
+     if(x.post.id === myId)
+     {
+       console.log("Found it!: ", myId, x);
+       myThought = x;
+       console.log(this.props.thoughts_[0].post.text);
 
-    //let myComment; // if it has comment show, if it doesnt, throw error
+     }});
+
+     //let myComment; // if it has comment show, if it doesnt, throw error
     return (
       <div>
         <div className='post-preview'>
           <div className='details-top'>
-            <span className='timestamp' />
+            <span className='timestamp'></span>
           </div>
 
           <div className='text'>{myThought.post.text}</div>
           <div className='tags'>
-            {myThought.tag.map((myTag, i) => (
-              <span key={i}>#{myTag.tag}</span>
-            ))}
+          {myThought.tag.map((myTag,i)=> <span key = {i}>#{myTag.tag}</span>)}
+
           </div>
 
           <div className='controls-bottom'>
@@ -57,14 +57,14 @@ class SingleThought extends Component {
               >
                 Up
               </button>
-              <span className='votes' />
+              <span className='votes'></span>
               <button
                 onClick={this.props.downVote.bind(null, myId)}
                 className='vote down'
               >
                 Down
               </button>
-              <span className='votes' />
+              <span className='votes'></span>
               <Link to='/thoughts'>
                 <button> bAAck</button>
               </Link>
@@ -77,23 +77,24 @@ class SingleThought extends Component {
             </button>
           </div>
 
-          <div className='comments-wrapper'>
-            <input
-              value={this.state.inputTextHolder_}
-              onChange={this.getInputText}
-              placeholder='type comment'
-            />
-            <button
-              onClick={this.props.createComment.bind(
-                null,
-                myId,
-                this.state.inputTextHolder_,
-                this.state.inputMarkOwner_
-              )}
-            >
-              Post
-            </button>
+          <div>
+
           </div>
+          <input
+            value={this.state.inputTextHolder_}
+            onChange={this.getInputText}
+            placeholder='type comment'
+          />
+          <button
+            onClick={this.props.createComment.bind(
+              null,
+              myId,
+              this.state.inputTextHolder_,
+              this.state.inputMarkOwner_
+            )}
+          >
+            submit
+          </button>
         </div>
       </div>
     );
