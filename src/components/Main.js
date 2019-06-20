@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import Thoughts from './Posts/Thoughts';
-// import SingleThought from './Posts/SingleThought';
+import SingleThought from './Posts/SingleThought';
 import CreateThought from './Posts/CreateThought';
 import HeaderComponent from './Partials/header';
 import Navbar from './Partials/navbar';
@@ -107,6 +107,16 @@ class Main extends React.Component {
                   startModalHandler={this.startModalHandler}
                   {...this.props}
                 />
+              )}
+            />
+            <Route
+              exact
+              path='/thoughts/:id'
+              component={() => (
+                // <SingleThought
+                //   startModalHandler={this.startModalHandler}
+                //   {...this.props}
+                // />
               )}
             />
             <Route
