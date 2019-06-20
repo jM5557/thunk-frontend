@@ -1,15 +1,15 @@
 import React, { Fragment } from 'react';
-import Thoughts from './posts/Thoughts';
-import SingleThought from './posts/SingleThought';
-import CreateThought from './posts/CreateThought';
-import HeaderComponent from './partials/Header';
-import Navbar from './partials/navbar';
+import Thoughts from './Posts/Thoughts';
+import SingleThought from './Posts/SingleThought';
+import CreateThought from './Posts/CreateThought';
+import HeaderComponent from './Partials/header';
+import Navbar from './Partials/navbar';
 import '../scss/main.scss';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Modal from './modals/Modal';
-import ModalBackdrop from './modalbackdrop/ModalBackdrop';
-import Settings from './user/Account/Settings';
-import Activity from './user/Account/Activity';
+import ModalBackdrop from './modalBackdrop/ModalBackdrop';
+import Settings from './User/Account/Settings';
+import Activity from './User/Account/Activity';
 import thoughts from '../data/thoughts';
 
 class Main extends React.Component {
