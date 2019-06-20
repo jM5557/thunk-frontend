@@ -1,2 +1,560 @@
 @import './partials/reset.scss';
 @import './partials/variables.scss';
+
+body {
+  font-family: $normal-font;
+  margin: 0px;
+  overflow-y: hidden;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+header,
+button {
+  font-family: $heavy-font;
+}
+
+a {
+  text-decoration: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+.main-header {
+  background-color: $color-blue;
+  color: #fff;
+  padding: 25px;
+  text-align: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .logo-top {
+    justify-self: flex-start;
+    margin: auto auto auto 0px;
+  }
+
+  a {
+    color: #fff;
+    font-size: 35px;
+  }
+
+  h1 {
+    margin-top: 15px;
+    font-style: italic;
+  }
+
+  .user-settings {
+    p {
+      display: block;
+      margin-top: 15px;
+    }
+  }
+}
+
+.main-nav {
+  background-color: $color-blue;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+
+  a {
+    font-size: 18px;
+    font-weight: bolder;
+    color: #fff;
+    margin: 5px;
+    padding: 12px 15px;
+  }
+}
+
+.login-btn {
+  background-color: #fff;
+  border-radius: 200px;
+  padding: 15px;
+  display: block;
+  color: $color-blue;
+  margin: 15px auto;
+  width: 95%;
+  max-width: 360px;
+  font-size: 18px;
+  box-shadow: 0px 0px 48px -6px #111;
+}
+
+.logged-out-layout {
+  background-color: $color-blue;
+  box-sizing: border-box;
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: inset 0px -80px 180px -20px #111;
+}
+
+.logged-out-inner {
+  max-width: 720px;
+  margin: auto;
+  text-align: center;
+  color: #fff;
+
+  h1 {
+    font-size: 45px;
+    font-weight: bolder;
+    margin-bottom: 25px;
+  }
+
+  &.register .log-in,
+  .register-btn {
+    color: #70cfec;
+    padding: 8px;
+    margin: 10px auto 10px auto;
+    display: block;
+    background-color: transparent;
+    border: none;
+    font-size: 21px;
+    border-bottom: solid 3px;
+    box-shadow: none;
+    border-radius: 0px;
+    max-width: 55%;
+  }
+
+  .form {
+    padding: 10px 10px 10px;
+  }
+}
+
+.thoughts-list {
+  .thought-item {
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+}
+
+.post-preview {
+  background-color: #fff;
+  box-shadow: 0px 3px 10px -4px rgba(0, 0, 0, 0.65);
+  padding: 20px 25px;
+  max-width: 85%;
+  margin: auto;
+  border-radius: 6px;
+
+  .text {
+    font-size: 22px;
+    font-weight: bolder;
+    padding: 15px 10px 15px;
+    margin: 10px auto;
+    background-color: #eee;
+    border-radius: 3px;
+  }
+
+  .details-top {
+    text-align: right;
+
+    .timestamp {
+      color: #aaa;
+      font-size: 15px;
+    }
+  }
+
+  .tags {
+    display: flex;
+
+    span {
+      margin: 5px;
+      background-color: #eee;
+      padding: 8px;
+      font-size: 13px;
+    }
+  }
+
+  .controls-bottom {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row wrap;
+    align-items: center;
+
+    .vote-wrapper {
+      button,
+      span {
+        margin: 5px;
+      }
+    }
+
+    .vote {
+      border: none;
+      display: inline-block;
+      text-indent: -999999px;
+      background-color: $color-blue;
+      padding: 15px 25px;
+      border-radius: 3px;
+
+      &.up {
+        background: $color-blue url('./../images/votes-up.png') no-repeat center
+          center;
+        background-size: 65% auto;
+      }
+
+      &.down {
+        background: $color-blue url('./../images/votes-down.png') no-repeat
+          center center;
+        background-size: 65% auto;
+      }
+    }
+
+    .votes {
+      font-weight: bolder;
+      font-size: 20px;
+      padding: 10px;
+    }
+  }
+}
+
+.text {
+  font-size: 22px;
+  font-weight: bolder;
+  padding: 15px 10px 15px;
+  margin: 10px auto;
+  background-color: #eee;
+  border-radius: 3px;
+}
+
+.report {
+  color: $color-red;
+  border: none;
+  font-weight: bolder;
+  font-size: 20px;
+  opacity: 0.75;
+  padding: 5px 12px;
+
+  &:hover {
+    opacity: 1;
+  }
+}
+
+.post-preview-list {
+  .post-preview {
+    margin-bottom: 6px;
+  }
+}
+
+.comment-list {
+  padding: 20px 15px;
+
+  .comment-item {
+    margin-bottom: 5px;
+  }
+}
+
+.comment-item {
+  background-color: #fff;
+  border: solid thin #aaa;
+  padding: 15px;
+  border-radius: 6px;
+
+  .text {
+    padding: 15px;
+    background-color: #eee;
+    margin-bottom: 5px;
+    font-size: 18px;
+  }
+
+  .report {
+    font-size: 16px;
+  }
+}
+
+.controls-bar {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.comment-btn {
+  background-color: none;
+  border: none;
+  margin: auto auto auto 5px;
+  i {
+    font-size: 25px;
+    color: $color-blue;
+  }
+}
+
+.radio-buttons {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+
+  label {
+    padding: 0.5rem;
+  }
+}
+
+.modal {
+  width: 25rem;
+  max-width: 50%;
+  background: white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  position: fixed;
+  top: 20vh;
+  left: 50%;
+  transform: translatex(-50%);
+  z-index: 999;
+
+  button {
+    margin: auto;
+    border-radius: 10px;
+    font-size: 25px;
+    padding: 0.5rem;
+    color: white;
+    font-weight: 600;
+  }
+}
+
+.modal-header {
+  padding: 2rem;
+  background: #b44e59;
+  color: white;
+  text-align: center;
+}
+
+.modal-header h1 {
+  margin: 0;
+  font-size: 1.25rem;
+}
+
+.modal-btn-r {
+  background: $color-red;
+}
+
+.modal-btn-c {
+  background: $color-blue;
+}
+
+.modal-btn-confirm {
+  background: $color-blue;
+}
+
+.modal-content {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  p {
+    font-size: 20px;
+    padding: 1rem;
+  }
+
+  h2 {
+    font-size: 25px;
+  }
+}
+
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.75);
+  z-index: 999;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  padding: 1rem;
+}
+
+.page-nav {
+  margin-top: 85px;
+}
+
+a.user-settings {
+  margin: 15px 15px;
+  font-size: 14px;
+
+  i {
+    font-size: 25px;
+  }
+}
+
+body,
+html {
+  height: 100%;
+}
+
+.searchbar-header {
+  width: 75%;
+  max-width: 85%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+
+  input[type='text'] {
+    display: inline;
+    width: 90%;
+    background-color: lightslategrey;
+    border: none;
+    border-radius: 5px;
+    padding: 0.5rem;
+  }
+}
+
+.tabs {
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.tabs button {
+  font-size: 25px;
+  color: white;
+  margin: auto;
+  background: none;
+  border: none;
+  border-radius: 10px;
+  padding: 0.5rem;
+}
+
+.search-section {
+  button {
+    border: none;
+    color: white;
+    background: none;
+  }
+}
+
+body,
+html {
+  height: 100%;
+}
+
+body {
+  margin: 0px;
+  overflow-y: hidden;
+}
+
+.logged-in-view {
+  display: flex;
+  box-sizing: border-box;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.page-content {
+  overflow-y: scroll;
+  z-index: 999;
+  flex-grow: 1;
+}
+
+.main-header {
+  flex: 0 0 auto;
+}
+
+.main-nav {
+  flex: 0 0 auto;
+}
+
+.settings-page {
+  margin: auto auto;
+  display: flex;
+  justify-content: center;
+  flex-flow: column wrap;
+  align-items: center;
+  height: 100%;
+
+  .settings-page-content {
+    width: 85%;
+    margin: auto;
+    max-width: 640px;
+
+    button {
+      border: none;
+      border-radius: 500px;
+      background-color: $color-blue;
+      color: #fff;
+      padding: 25px 15px;
+      font-size: 25px;
+      display: block;
+      margin: 15px auto;
+      width: 100%;
+    }
+  }
+}
+
+.tab-wrapper {
+  border-bottom: solid 4px $color-blue;
+  text-align: center;
+  width: 85%;
+  max-width: 720px;
+  margin: 25px auto;
+
+  button {
+    padding: 15px;
+    font-size: 25px;
+    background-color: $color-blue;
+    color: #fff;
+    border: none;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    margin-right: 5px;
+  }
+}
+
+.create-thought-wrapper {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin: 1rem auto 1rem auto;
+  background-color: lightgrey;
+  padding: 3rem;
+  border-radius: 10px;
+
+  h2 {
+    margin: 1.5rem;
+    font-size: 35px;
+    text-align: center;
+    font-weight: 450;
+    color: white;
+  }
+
+  textarea {
+    width: calc(100%-1rem);
+    padding: 0.5rem;
+  }
+
+  .thought-title {
+    padding: 15px;
+    font-size: 20px;
+  }
+
+  input,
+  textarea,
+  button {
+    margin: 1rem;
+  }
+
+  button {
+    color: white;
+    font-size: 25px;
+    background-color: $color-blue;
+    border: none;
+    border-radius: 10px;
+    padding: 1rem;
+    font-weight: 600;
+  }
+
+  .tags-box {
+    padding: 15px;
+  }
+}
