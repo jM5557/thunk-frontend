@@ -11,11 +11,11 @@ function mapStateToProps(state){
   }
 }
 
-componentDidMount(){
+componentDidMount() {
   axios.get("/students")
-  .then(res => res.data)
-  .then(students => console.log(students))
-  .catch(err => console.log(err));
+    .then(res => res.data)
+    .then(students => console.log(students))
+    .catch(err => console.log(err));
 }
 
 function mapDispatchToProps(dispatch){
