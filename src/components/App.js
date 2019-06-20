@@ -11,12 +11,7 @@ function mapStateToProps(state){
   }
 }
 
-componentDidMount() {
-  axios.get("/students")
-    .then(res => res.data)
-    .then(students => console.log(students))
-    .catch(err => console.log(err));
-}
+
 
 function mapDispatchToProps(dispatch){
   return {...bindActionCreators(actionCreators, dispatch), getThoughts: () => dispatch(getThoughts())}
