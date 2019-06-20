@@ -7,7 +7,7 @@ import Navbar from './partials/navbar';
 import '../scss/main.scss';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Modal from './modals/Modal';
-import ModalBackdrop from './modalbackdrop/ModalBackdrop';
+import ModalBackdrop from './modalBackdrop/ModalBackdrop';
 import Settings from './user/Account/Settings';
 import Activity from './user/Account/Activity';
 import thoughts from '../data/thoughts';
