@@ -2,13 +2,12 @@ import React, { Fragment } from 'react';
 import Thoughts from './posts/Thoughts';
 import SingleThought from './posts/SingleThought';
 import CreateThought from './posts/CreateThought';
-import HeaderComponent from './partials/Header';
-import Navbar from './partials/Navbar';
-
+import HeaderComponent from './partials/header';
+import Navbar from './partials/navbar';
 import '../scss/main.scss';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Modal from './modals/Modal';
-import ModalBackdrop from './modalbackdrop/ModalBackdrop';
+import ModalBackdrop from './modalBackdrop/ModalBackdrop';
 import Settings from './user/Account/Settings';
 import Activity from './user/Account/Activity';
 import thoughts from '../data/thoughts';
@@ -20,8 +19,7 @@ class Main extends React.Component {
   };
 
   modalCancelHandler = () => {
-    console.log('TEST');
-    this.setState({ creating_: false });
+    this.setState({ creating_: false, confirmReport_: false });
   };
 
   modalReportHandler = () => {
@@ -36,9 +34,21 @@ class Main extends React.Component {
     this.setState({ confirmReport_: true });
   };
 
-  render() {
-    console.log('MAIN');
-    return (
+  submitHandler = () => {
+    this.setState({
+      confirmReport_: false,
+      creating_: false
+    });
+  }
+
+  componentDidMount()
+  {
+    this.props.getThoughts()
+  }
+
+  render(){
+
+    return(
       <Router>
         <HeaderComponent />
         <div className='page-content'>
@@ -46,12 +56,12 @@ class Main extends React.Component {
             <Fragment>
               <ModalBackdrop onCancel={this.modalCancelHandler} />
               <Modal title='Report'>
-                <p>Confirm reporttttt</p>
+                <p>Confirm report</p>
                 <button
                   onClick={this.modalCancelHandler}
                   className='modal-btn-confirm'
                 >
-                  Confirmttt
+                  Confirm
                 </button>
               </Modal>
             </Fragment>

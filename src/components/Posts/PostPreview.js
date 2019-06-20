@@ -17,17 +17,17 @@ const PostPreview = props => {
   return (
     <div className='post-preview'>
       <div className='details-top'>
-        <span className='timestamp'>{timestamp}</span>
+        <span className='timestamp'></span>
       </div>
 
-      <div className='text'>{text}</div>
+      <div className='text'></div>
 
-      <div className='tags'>{displayTags}</div>
+      <div className='tags'></div>
 
       <div className='controls-bottom'>
         <div className='vote-wrapper'>
           <button className='vote up'>Up</button>
-          <span className='votes'>{upvotes - downvotes}</span>
+          <span className='votes'></span>
           <button className='vote down'>Down</button>
         </div>
         <button className='comment-btn'>
