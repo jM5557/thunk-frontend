@@ -1,3 +1,32 @@
+import axios from "axios";
+
+let lat = 0.00;
+let long = 0.00;
+
+
+window.setInterval( () => {
+  if (navigator.geolocation) {
+
+    navigator.geolocation.getCurrentPosition((pos) => { 
+        long = pos.coords.longitude;
+        lat = pos.coords.latitude;
+    }, 
+    
+    function() {
+
+      console.log('some error');
+
+    });
+
+  }
+
+  else {
+    
+    console.log('some error');
+
+  }
+}, 5000);
+
 function thoughtsReducer(state = [], action)
 {
   const i = action.inputPostId;
@@ -22,15 +51,24 @@ function thoughtsReducer(state = [], action)
         ...state.slice(i+1),
       ]
     case 'CREATE_THOUGHT' :
-      console.log("REDUCER: create_thought", state);
-      return [...state,{
-        id: action.inputPostId,
+      axios.post('https://thunk-api-19.herokuapp.com/api/v1/post/', {
         text: action.inputText,
-        up_vote: action.inputUpVote,
-        down_vote: action.inputDownVote,
-        report_count: action.inputReportCount,
-        hash_tag: action.inputHashTags,
-        time_stamp: action.inputTimeStamp,
+        lattitude: lat,
+        longitude: long
+      });
+      console.log(action.inputPostId);
+      return [...state,{
+        user: null,
+        post: {
+          id: action.inputPostId,
+          text: action.inputText,
+          lattitude: lat,
+          longitude: long
+        },
+        comment: [],
+        tag: [],
+        vote: 0
+        
       }]
 
     case 'GET_THOUGHTS' :

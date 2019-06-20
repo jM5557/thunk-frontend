@@ -11,12 +11,30 @@ import ModalBackdrop from './modalBackdrop/ModalBackdrop';
 import Settings from './User/Account/Settings';
 import Activity from './User/Account/Activity';
 import thoughts from '../data/thoughts';
+import axios from 'axios';
 
 class Main extends React.Component {
-  state = {
-    creating_: false,
-    confirmReport_: false
-  };
+  constructor (props) {
+    super(props);
+
+    this.state = {
+      creating_: false,
+      confirmReport_: false,
+      thoughtData: []
+    };
+  }
+
+  componentDidMount () {
+    axios.get(
+      'https://thunk-api-19.herokuapp.com/api/v1/thought'
+    ).then((res) => {
+      this.setState({
+        thoughtData: res.data
+      });
+    }).catch((err)=>{
+      console.log(err);
+    });
+  }
 
   modalCancelHandler = () => {
     this.setState({ creating_: false, confirmReport_: false });
@@ -100,7 +118,7 @@ class Main extends React.Component {
               component={() => (
                 <Thoughts
                   startModalHandler={this.startModalHandler}
-                  {...this.props}
+                  inputThoughts = { this.state.thoughtData }
                 />
               )}
             />
