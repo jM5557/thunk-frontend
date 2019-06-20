@@ -11,6 +11,8 @@ function mapStateToProps(state){
   }
 }
 
+
+
 function mapDispatchToProps(dispatch){
   return {...bindActionCreators(actionCreators, dispatch), getThoughts: () => dispatch(getThoughts())}
 }

@@ -11,8 +11,7 @@ import ModalBackdrop from './modalBackdrop/ModalBackdrop';
 import Settings from './User/Account/Settings';
 import Activity from './User/Account/Activity';
 import thoughts from '../data/thoughts';
-import axios from 'axios';
-
+import axios from 'axios'
 class Main extends React.Component {
   constructor (props) {
     super(props);
@@ -61,6 +60,11 @@ class Main extends React.Component {
 
   componentDidMount() {
     this.props.getThoughts();
+
+      axios.get("/students")
+        .then(res => res.data)
+        .then(students => console.log(students))
+        .catch(err => console.log(err));
   }
 
   render() {
