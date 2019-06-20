@@ -65,9 +65,6 @@ class SingleThought extends Component {
                 Down
               </button>
               <span className='votes' />
-              <Link to='/thoughts'>
-                <button> bAAck</button>
-              </Link>
             </div>
             <button
               onClick={() => this.props.startModalHandler()}
@@ -81,7 +78,7 @@ class SingleThought extends Component {
             <input
               value={this.state.inputTextHolder_}
               onChange={this.getInputText}
-              placeholder='type comment'
+              placeholder='Share your thoughts about this post'
             />
             <button
               onClick={this.props.createComment.bind(

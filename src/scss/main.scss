@@ -547,7 +547,7 @@ body {
     font-size: 35px;
     text-align: center;
     font-weight: 550;
-    color: whitesmoke;
+    color: white;
   }
 
   textarea {
@@ -583,8 +583,30 @@ body {
 }
 
 .comments-wrapper {
+  margin-top: 1rem;
+  margin-left: 0;
+  max-width: 50%;
   display: flex;
-  flex-direction: column;
   justify-content: flex-start;
-  padding: 15px;
+  padding: 1rem 0;
+
+  input {
+    width: 40%;
+    border-color: gray;
+    border-radius: 7px;
+    border-width: thin;
+    padding: 0.25rem;
+  }
+
+  button {
+    border: none;
+    color: black;
+    margin-left: 1rem;
+    font-size: 15px;
+  }
+}
+
+.test {
+  display: flex;
+  justify-content: center;
 }

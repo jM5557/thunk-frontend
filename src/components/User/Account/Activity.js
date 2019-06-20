@@ -41,11 +41,13 @@ export default class Activity extends Component {
           </button>
         </div>
 
-        {this.state.view === 'POSTS' ? (
-          <Fragment>{this.props.children}</Fragment>
-        ) : (
-          <CommentList commentList={this.state.comment_data} />
-        )}
+        <div className='test'>
+          {this.state.view === 'POSTS' ? (
+            <Fragment>{this.props.children}</Fragment>
+          ) : (
+            <CommentList commentList={this.state.comment_data} />
+          )}
+        </div>
       </div>
     );
   }
