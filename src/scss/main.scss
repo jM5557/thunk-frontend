@@ -492,21 +492,42 @@ body {
 }
 
 .tab-wrapper {
+  display: flex;
+  justify-content: space-between;
+
   border-bottom: solid 4px $color-blue;
   text-align: center;
   width: 85%;
   max-width: 720px;
   margin: 25px auto;
+  height: 5vh;
 
   button {
-    padding: 15px;
+    padding: 5px 10px;
     font-size: 25px;
     background-color: $color-blue;
     color: #fff;
     border: none;
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
-    margin-right: 5px;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+  }
+
+  .thoughts-btn {
+    margin: auto auto auto 27%;
+  }
+
+  .comments-btn {
+    margin: auto 27% auto auto;
+  }
+
+  .thoughts-btn:hover {
+    background-color: lightgrey;
+    color: black;
+  }
+
+  .comments-btn:hover {
+    background-color: lightgrey;
+    color: black;
   }
 }
 
@@ -519,18 +540,20 @@ body {
   background-color: lightgrey;
   padding: 3rem;
   border-radius: 10px;
+  height: 65vh;
 
   h2 {
     margin: 1.5rem;
     font-size: 35px;
     text-align: center;
-    font-weight: 450;
-    color: white;
+    font-weight: 550;
+    color: whitesmoke;
   }
 
   textarea {
     width: calc(100%-1rem);
     padding: 0.5rem;
+    border: none;
   }
 
   .thought-title {
@@ -542,13 +565,13 @@ body {
   textarea,
   button {
     margin: 1rem;
+    border: none;
   }
 
   button {
     color: white;
     font-size: 25px;
     background-color: $color-blue;
-    border: none;
     border-radius: 10px;
     padding: 1rem;
     font-weight: 600;

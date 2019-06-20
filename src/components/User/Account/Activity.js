@@ -27,11 +27,16 @@ export default class Activity extends Component {
     return (
       <div className='activity-page content-page'>
         <div className='tab-wrapper'>
-          <button onClick={this.changeActivityView.bind(this, 'POSTS')}>
+          <button
+            className='thoughts-btn'
+            onClick={this.changeActivityView.bind(this, 'POSTS')}
+          >
             Thoughts
           </button>
-
-          <button onClick={this.changeActivityView.bind(this, 'COMMENTS')}>
+          <button
+            className='comments-btn'
+            onClick={this.changeActivityView.bind(this, 'COMMENTS')}
+          >
             Comments
           </button>
         </div>
