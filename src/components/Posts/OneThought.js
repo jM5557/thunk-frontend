@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 
-class SingleThought extends Component {
+class OneThought extends Component {
   constructor() {
     super();
     this.state = {
@@ -97,4 +97,4 @@ class SingleThought extends Component {
   }
 }
 
-export default withRouter(SingleThought);
+export default withRouter(OneThought);

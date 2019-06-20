@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import Thoughts from './Posts/Thoughts';
-import SingleThought from './Posts/SingleThought';
+import OneThought from './Posts/OneThought';
 import CreateThought from './Posts/CreateThought';
 import HeaderComponent from './Partials/header';
 import Navbar from './Partials/navbar';
@@ -113,7 +113,7 @@ class Main extends React.Component {
               exact
               path='/thoughts/:id'
               component={() => (
-                <SingleThought
+                <OneThought
                   startModalHandler={this.startModalHandler}
                   {...this.props}
                 />
