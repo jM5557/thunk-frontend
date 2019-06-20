@@ -42,6 +42,11 @@
        "last 1 safari version"
      ]
   },
+  {
+  "resolutions": {
+    "caniuse-lite": "1.0.30000971"
+  }
+  ,
   "repository": {
     "type": "git",
     "url": "git+https://github.com/jM5557/thunk-frontend.git"
