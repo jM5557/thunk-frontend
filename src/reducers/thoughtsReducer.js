@@ -70,7 +70,7 @@ function thoughtsReducer(state = [], action) {
       console.log(action.inputPostId);
       axios.delete('https://thunk-api-19.herokuapp.com/api/v1/post/' + action.inputPostId)
         .then( (res) => {
-          window.location.href = "/";
+          window.location.href = "/home";
         } )
         .catch( (err) => {
           console.log(err);

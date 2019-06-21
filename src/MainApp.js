@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './scss/main.scss';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import LoggedOutView from './components/layout/LoggedOutView';
 import App from './components/App';
 import axios from 'axios';
@@ -27,13 +27,13 @@ export default class MainApp extends Component {
   render() {
     return (
       <Router>
-          {/* {!this.state.isLoggedIn ? ( */}
-            <Route path = "/login" component={LoggedOutView} />
-          {/* // ) : ( */}
+          <Switch>
+            <Route exact path = "/" component={LoggedOutView} />
+            
             <div className = "logged-in-view">
               <Route component={ App } />
             </div>
-          {/* )} */}
+          </Switch>
       </Router>
     );
   }

@@ -5,7 +5,7 @@ export default class Navbar extends Component {
   render() {
     return (
       <nav className='main-nav'>
-        <Link to='/'>
+        <Link to='/home'>
           <i className='fas fa-home' />
         </Link>
         <Link to='/search'>
