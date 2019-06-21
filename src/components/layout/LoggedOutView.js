@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import axios from 'axios';
+import LogoImg from './../../images/logo.png';
 
 class LogInForm extends Component {
   constructor(props) {
@@ -26,6 +25,7 @@ export default class LoggedOutView extends Component {
     return (
       <div className='logged-out-layout'>
         <div className='logged-out-inner'>
+          <img alt = "Thunk Logo" src = { LogoImg } />
           <h1>Get Started</h1>
 
           <div>

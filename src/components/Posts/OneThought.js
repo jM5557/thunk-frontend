@@ -148,7 +148,6 @@ class SingleThought extends Component {
       <div>
         <div className='post-preview'>
           <div className = "details-top">
-            <p>postId: {myThought.id} </p>
               <span className = "timestamp">
                   {myThought.post.createdAt}
               </span>
@@ -180,13 +179,15 @@ class SingleThought extends Component {
                           Down
                   </button>
 
-                  <Link to = {`/thoughts/${myThought.id}`}>
-                      <i className='fas fa-comments' />
+                  <Link to = {`/thoughts/${myThought.id}`} className = "comment-wrapper">
+                    <i className='fas fa-comments' />
+
+                    <span className = "comment-text"> {myComment.length} </span>
                   </Link>
-                  <span className = "votes"> {myComment.length} </span>
               </div>
 
-      
+              <button onClick={() => this.props.startModalHandler(myThought.post.id)} className='report'> <i className='fas fa-flag' /> </button>
+
               <button
                 className = "delete"
                 onClick = { () => { this.props.deleteThought(myThought.post.id) } }
@@ -194,13 +195,12 @@ class SingleThought extends Component {
                 Delete
               </button>
 
-              <button onClick={() => this.props.startModalHandler(myThought.post.id)} className='report'> <i className='fas fa-flag' /> </button>
-
           </div>
       </div>
 
     <div className='comments-wrapper'>
       <input
+        type="text"
         value={this.state.inputTextHolder_}
         onChange={this.getInputText}
         placeholder='Share your thoughts about this post'

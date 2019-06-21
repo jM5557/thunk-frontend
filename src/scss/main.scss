@@ -29,15 +29,20 @@ button {
 .main-header {
   background-color: $color-blue;
   color: #fff;
-  padding: 25px;
+  padding: 5px 10px;
   text-align: center;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  box-shadow: 0px 4px 25px -5px #222;
 
   .logo-top {
-    justify-self: flex-start;
     margin: auto auto auto 0px;
+
+    img {
+      max-width: 125px;
+      display: block;
+    }
   }
 
   a {
@@ -71,13 +76,21 @@ button {
     color: #fff;
     margin: 5px;
     padding: 12px 15px;
+
+    i {
+      font-size: 25px;
+    }
+
+    &:hover {
+      background-color: $color-blue-dark;
+    }
   }
 }
 
 .login-btn {
   background-color: #fff;
   border-radius: 200px;
-  padding: 15px;
+  padding:  20px 15px;
   display: block;
   color: $color-blue;
   margin: 15px auto;
@@ -95,7 +108,11 @@ button {
   display: flex;
   justify-content: center;
   align-items: center;
-  box-shadow: inset 0px -80px 180px -20px #111;
+  
+  img {
+    max-width: 240px;
+  }
+
 }
 
 .logged-out-inner {
@@ -145,6 +162,16 @@ button {
   margin: 3rem auto auto auto;
   border-radius: 6px;
 
+  .delete {
+    background-color: $color-red;
+    color: #FFF;
+    padding: 9px 10px;
+    border: none;
+    border-radius: 5px;
+    margin: auto 0px auto auto;
+    font-size: 20px;
+  }
+
   .text {
     font-size: 22px;
     font-weight: bolder;
@@ -187,7 +214,17 @@ button {
       }
     }
 
+    .comment-wrapper {
+
+      padding: 15px 15px;
+      background-color: #EEE;
+      border-radius: 6px;
+      margin-left: 5px;
+
+    }
+
     .vote {
+
       border: none;
       display: inline-block;
       text-indent: -999999px;
@@ -240,6 +277,7 @@ button {
   font-size: 20px;
   opacity: 0.75;
   padding: 5px 12px;
+  margin-right: 5px;
 
   &:hover {
     opacity: 1;
@@ -404,7 +442,7 @@ html {
   display: flex;
   justify-content: center;
   flex-direction: column;
-  background-color: $color-blue;
+  background-color: $color-blue-dark;
 
   input[type='text'] {
     display: inline;
@@ -507,7 +545,6 @@ body {
   width: 85%;
   max-width: 720px;
   margin: 25px auto;
-  height: 5vh;
 
   button {
     padding: 5px 10px;
@@ -589,23 +626,25 @@ body {
 }
 
 .comments-wrapper {
-  margin-top: 1rem;
-  margin-left: 0;
-  max-width: 50%;
   display: flex;
-  justify-content: flex-start;
-  padding: 1rem 0;
+  margin: auto;
+  justify-content: center;
+  padding: 3rem 1rem;
 
-  input {
-    width: 40%;
-    border-color: gray;
-    border-radius: 7px;
-    border-width: thin;
-    padding: 0.25rem;
+  input[type="text"] {
+    border: none;
+    border-radius: 3px;
+    box-shadow: 0px 2px 35px -4px #111;
+    padding: 1rem;
+    width: 60%;
+    font-size: 25px;
   }
 
   button {
+    background-color: #d17f13;
     border: none;
+    padding: 8px 24px;
+    border-radius: 5px;
     color: black;
     margin-left: 1rem;
     font-size: 15px;
@@ -615,6 +654,9 @@ body {
 .test {
   display: flex;
   justify-content: center;
+  flex-flow: column wrap;
+  max-width: 900px;
+  margin: auto;
 }
 
 .tags-wrapper {
