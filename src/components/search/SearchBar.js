@@ -44,7 +44,7 @@ class SearchBar extends Component {
   }
   getInputHashTag = event =>
   {
-    this.setState({inputHashTag_: event.target.value});
+    this.setState({inputHashTag_: event.target.value.toLowerCase()});
   }
 
   btnSearch = () =>
@@ -79,26 +79,16 @@ class SearchBar extends Component {
         <Fragment><Thoughts inputThoughts = {this.state.myWorst_}/></Fragment>
       )
     } else if (this.state.view === 'TAGS'){
-
-      if(this.state.myHashTag_.length <= 0)
-      {
-      contentToDisplay=(
+      contentToDisplay = (
+      <Fragment>
         <div>
-        <input type = 'text' onChange ={this.getInputHashTag} placeholder='Search...' />
-        <button onClick = {this.btnSearch}> search </button>
-        <p>{this.state.inputHashTag_}</p>
-
+          <input type = 'text' onChange ={this.getInputHashTag} placeholder='Search...' />
+          <button onClick = {this.btnSearch}> search </button>
+          <p>{this.state.inputHashTag_}</p>
         </div>
-      )}
-      else {
-        contentToDisplay=(
-          <div>
-          <Fragment><Thoughts inputThoughts = {this.state.myHashTag_}/></Fragment>
-          </div>
-        )
-
-      }
-
+        <Thoughts inputThoughts = {this.state.myHashTag_}/>
+      </Fragment>
+      )
     } else {
       contentToDisplay=(
         <div>DEFAULT</div>

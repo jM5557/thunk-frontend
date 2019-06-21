@@ -1,6 +1,12 @@
 import React, { Fragment } from 'react';
 import Thoughts from './Posts/Thoughts';
+<<<<<<< HEAD
 import OneThought from './Posts/OneThought';
+||||||| merged common ancestors
+import SingleThought from './Posts/SingleThought';
+=======
+import SingleThought from './Posts/OneThought';
+>>>>>>> 46133bb12f5a4233888585828e2edf75655c59ce
 import CreateThought from './Posts/CreateThought';
 import HeaderComponent from './Partials/header';
 import Navbar from './Partials/navbar';

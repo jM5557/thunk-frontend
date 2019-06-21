@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { withRouter, Link } from 'react-router-dom';
+import logoImg from './../../images/logo.png';
 
 class HeaderComponent extends Component {
   constructor(props) {
@@ -30,7 +31,7 @@ class HeaderComponent extends Component {
       <header className='main-header'>
           <div className='header-inner'>
             <Link to='/' className='logo-top'>
-              Thunk!
+              <img alt = "logo-img" src = { logoImg } />
             </Link>
             <h1>{headerText}</h1>
           </div>

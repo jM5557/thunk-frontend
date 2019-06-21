@@ -92,7 +92,6 @@ export default class ThoughtPreview extends Component {
         return (
             <div className = "post-preview">
                 <div className = "details-top">
-                  <p>postId: {myThought.id} </p>
                     <span className = "timestamp">
                         {this.props.thoughts_.post.createdAt}
                     </span>
@@ -124,10 +123,11 @@ export default class ThoughtPreview extends Component {
                                 Down
                         </button>
 
-                        <Link to = {`/thoughts/${myThought.id}`}>
+                        <Link to = {`/thoughts/${myThought.id}`} className = "comment-wrapper">
                             <i className='fas fa-comments' />
+
+                            <span className = "comment-text"> {myComment.length} </span>
                         </Link>
-                        <span className = "votes"> {myComment.length} </span>
                     </div>
                     <button onClick={() => this.props.startModalHandler(myThought.id)} className='report'> <i className='fas fa-flag' /> </button>
                 </div>
