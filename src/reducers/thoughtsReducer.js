@@ -1,3 +1,32 @@
+import axios from "axios";
+
+let lat = 0.00;
+let long = 0.00;
+
+
+window.setInterval( () => {
+  if (navigator.geolocation) {
+
+    navigator.geolocation.getCurrentPosition((pos) => { 
+        long = pos.coords.longitude;
+        lat = pos.coords.latitude;
+    },
+    
+    function() {
+
+      console.log('some error');
+
+    });
+
+  }
+
+  else {
+    
+    console.log('some error');
+
+  }
+}, 5000);
+
 function thoughtsReducer(state = [], action)
 {
   const i = action.inputPostId;
@@ -21,18 +50,31 @@ function thoughtsReducer(state = [], action)
         {...state[i], report_count: state[i].report_count+1},
         ...state.slice(i+1),
       ]
+    case 'DELETE_THOUGHT' :
+      console.log(action.inputPostId);
+      axios.delete('https://thunk-api-19.herokuapp.com/api/v1/post/' + action.inputPostId);
+      return true;
     case 'CREATE_THOUGHT' :
-      console.log("REDUCER: create_thought", state);
-      return [...state,{
-        id: action.inputPostId,
+      axios.post('https://thunk-api-19.herokuapp.com/api/v1/post/', {
         text: action.inputText,
-        up_vote: action.inputUpVote,
-        down_vote: action.inputDownVote,
-        report_count: action.inputReportCount,
-        hash_tag: action.inputHashTags,
-        time_stamp: action.inputTimeStamp,
-      }]
+        lattitude: lat,
+        longitude: long
+      }).then( (res) => {
+        console.log("Post added")
+        axios.post('https://thunk-api-19.herokuapp.com/api/v1/tag/group/post/' + action.inputPostId,
+          { tag: action.inputTags }
+        )
+          .then( (res) => {
+            console.log(action.inputTags);
 
+          })
+          .catch( (err) => {
+            console.log("Failed to add tag");
+          } );
+      } ).catch( (err) => {
+        console.log("Error");
+      });
+      return true;
     case 'GET_THOUGHTS' :
       return action.thoughts_
 

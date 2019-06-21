@@ -2,14 +2,18 @@ import React, { Component } from 'react';
 // import Comments from './Comments';
 import { withRouter } from 'react-router-dom';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 
 class SingleThought extends Component {
+  _isMounted = false;
+
   constructor() {
     super();
     this.state = {
       inputTextHolder_: '',
       inputText_: '',
-      inputMarkOwner_: true
+      inputMarkOwner_: true,
+      thought_data: null
     };
   }
 
@@ -20,22 +24,38 @@ class SingleThought extends Component {
   btnSubmit = () => {
     this.setState(state => ({ inputText_: state.inputTextHolder_ }));
   };
+
+  componentDidMount () {
+    this._isMounted = true;
+    // IMPLEMENT API BACKEND FUNCTIONALITY
+    // console.log(this.props.match.params.id);
+    axios.get('https://thunk-api-19.herokuapp.com/api/v1/thought/' + this.props.match.params.id)
+      .then( (res) => {
+        this.setState({
+          thought_data: res.data
+        });
+
+        console.log(res.data);
+      })
+      .catch( (err) => {
+        console.log("There was an error");
+      });
+  }
+
+  componentWillUnmount () {
+    this._isMounted = false;
+  }
+
   render() {
-    let myId = Number(this.props.match.params.id);
-    let thoughts = this.props.thoughts_;
-    let myThought;
+    let myThought = this.state.thought_data;
 
-    thoughts.map((x, i) => {
-      console.log(x.post.id, myId);
-      if (x.post.id === myId) {
-        console.log('Found it!: ', myId, x);
-        myThought = x;
-        console.log(this.props.thoughts_[0].post.text);
-      }
-    });
+    if (myThought === null) {
+      return (<div>Loading Post</div>); 
+    }
 
+    console.log(myThought.post.id);
     //let myComment; // if it has comment show, if it doesnt, throw error
-    return (
+   return (
       <div>
         <div className='post-preview'>
           <div className='details-top'>
@@ -52,14 +72,14 @@ class SingleThought extends Component {
           <div className='controls-bottom'>
             <div className='vote-wrapper'>
               <button
-                onClick={this.props.upVote.bind(null, myId)}
+                // onClick={this.props.upVote.bind(null, myId)}
                 className='vote up'
               >
                 Up
               </button>
               <span className='votes' />
               <button
-                onClick={this.props.downVote.bind(null, myId)}
+                // onClick={this.props.downVote.bind(null, myId)}
                 className='vote down'
               >
                 Down
@@ -72,6 +92,12 @@ class SingleThought extends Component {
             >
               <i className='fas fa-flag' />
             </button>
+            <button
+              className = "delete"
+              onClick = { () => { this.props.deleteThought(myThought.post.id) } }
+            >
+              Delete
+            </button>
           </div>
 
           <div className='comments-wrapper'>
@@ -83,7 +109,7 @@ class SingleThought extends Component {
             <button
               onClick={this.props.createComment.bind(
                 null,
-                myId,
+                this.state.thought_data.post.id,
                 this.state.inputTextHolder_,
                 this.state.inputMarkOwner_
               )}
@@ -93,6 +119,7 @@ class SingleThought extends Component {
           </div>
         </div>
       </div>
+
     );
   }
 }

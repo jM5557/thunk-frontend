@@ -2,18 +2,22 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
 export default class ThoughtPreview extends Component {
+    constructor (props) {
+        super(props);
+    }
+
     render() {
-      let myThought = this.props.thoughts_[this.props.index].post;
-      let myComment = this.props.thoughts_[this.props.index].comment;
+      let myThought = this.props.thoughts_.post;
+      let myComment = this.props.thoughts_.comment;
       // let myCount = this.props.thoughts_[this.props.index].count;
-      let myTags = this.props.thoughts_[this.props.index].tag;
+      let myTags = this.props.thoughts_.tag;
 
         return (
             <div className = "post-preview">
                 <div className = "details-top">
                   <p>postId: {myThought.id} </p>
                     <span className = "timestamp">
-                        {this.props.myProps.post.createdAt}
+                        {this.props.thoughts_.post.createdAt}
                     </span>
                 </div>
 
@@ -22,16 +26,16 @@ export default class ThoughtPreview extends Component {
                 </div>
 
                 <div className = "tags">
-                {myTags.map((myTag, i) => <span key = {i}> #{myTags[i].tag} </span>)}
+                { myTags.map((myTag, i) => <span key = {i}> #{myTags[i].tag} </span>)}
                 </div>
 
                 <div className = "controls-bottom">
                     <div className = "vote-wrapper">
-                        <button onClick = {this.props.upVote.bind(null, this.props.myProps.id)} className = "vote up">Up</button>
+                        <button onClick = { () => null } className = "vote up">Up</button>
                         <span className = "votes">0</span>
-                        <button onClick = {this.props.downVote.bind(null, this.props.myProps.id)} className = "vote down">Down</button>
+                        <button onClick = { () => null } className = "vote down">Down</button>
                         <Link to = {`/thoughts/${myThought.id}`}>
-                        <button className='comment-btn'><i className='fas fa-comments' /></button>
+                            <i className='fas fa-comments' />
                         </Link>
                         <span className = "votes"> {myComment.length} </span>
                     </div>

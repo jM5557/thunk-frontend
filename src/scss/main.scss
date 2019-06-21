@@ -540,7 +540,6 @@ body {
   background-color: lightgrey;
   padding: 3rem;
   border-radius: 10px;
-  height: 65vh;
 
   h2 {
     margin: 1.5rem;
@@ -609,4 +608,45 @@ body {
 .test {
   display: flex;
   justify-content: center;
+}
+
+.tags-wrapper {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-flow: row wrap;
+
+  .tag {
+    background-color: #eee;
+    padding: 7px;
+    border-radius: 6px;
+    margin: 4px;
+    cursor: pointer;
+    animation: scaleUp 0.32s 1;
+
+    &:hover {
+      background-color: $color-blue;
+      color: #FFF;
+    }
+
+    @keyframes scaleUp {
+      95% {
+        transform: scale(1.10);
+      }
+
+      from {
+        transform: scale(0);
+      }
+
+      to {
+        transform: scale(1)
+      }
+    }
+
+    i {
+      margin-left: 5px;
+      margin-right: auto;
+    }
+  }
+
 }

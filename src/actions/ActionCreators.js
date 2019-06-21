@@ -23,17 +23,21 @@ export function reportThought(inputPostId)
   }
 }
 
-export function createThought(inputPostId, inputText, inputUpVote, inputDownVote, inputReportCount, inputHashTags, inputTimeStamp)
+export function deleteThought(inputPostId) {
+  console.log(inputPostId);
+  return {
+    type: 'DELETE_THOUGHT',
+    inputPostId
+  }
+}
+
+export function createThought(inputPostId, inputText, inputTags)
 {
   return {
     type: 'CREATE_THOUGHT',
     inputPostId,
     inputText,
-    inputUpVote,
-    inputDownVote,
-    inputReportCount,
-    inputHashTags,
-    inputTimeStamp,
+    inputTags
   }
 }
 

@@ -13,10 +13,29 @@ import Activity from './User/Account/Activity';
 import thoughts from '../data/thoughts';
 import axios from 'axios'
 class Main extends React.Component {
-  state = {
-    creating_: false,
-    confirmReport_: false
-  };
+  
+  constructor (props) {
+    super(props);
+
+    this.state = {
+      creating_: false,
+      confirmReport_: false,
+      thoughtData: []
+    };
+  }
+
+  componentDidMount () {
+    axios.get(
+      'https://thunk-api-19.herokuapp.com/api/v1/thought'
+    ).then((res) => {
+      this.setState({
+        thoughtData: res.data
+      });
+    }).catch((err)=>{
+      console.log(err);
+    });
+  }
+
 
   modalCancelHandler = () => {
     this.setState({ creating_: false, confirmReport_: false });
@@ -40,15 +59,6 @@ class Main extends React.Component {
       creating_: false
     });
   };
-
-  componentDidMount() {
-    this.props.getThoughts();
-
-      axios.get("/students")
-        .then(res => res.data)
-        .then(students => console.log(students))
-        .catch(err => console.log(err));
-  }
 
   render() {
     return (
@@ -105,7 +115,7 @@ class Main extends React.Component {
               component={() => (
                 <Thoughts
                   startModalHandler={this.startModalHandler}
-                  {...this.props}
+                  inputThoughts = { this.state.thoughtData }
                 />
               )}
             />
