@@ -186,14 +186,9 @@ class OneThought extends Component {
                   </Link>
               </div>
 
-<<<<<<< HEAD:src/components/Posts/OneThought.js
-
-||||||| merged common ancestors
-      
-=======
               <button onClick={() => this.props.startModalHandler(myThought.post.id)} className='report'> <i className='fas fa-flag' /> </button>
 
->>>>>>> 46133bb12f5a4233888585828e2edf75655c59ce:src/components/Posts/OneThought.js
+
               <button
                 className = "delete"
                 onClick = { () => { this.props.deleteThought(myThought.post.id) } }
