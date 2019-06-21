@@ -83,7 +83,7 @@ class SearchBar extends Component {
       <Fragment>
         <div>
           <input type = 'text' onChange ={this.getInputHashTag} placeholder='Search...' />
-          <button onClick = {this.btnSearch}> search </button>
+          <button onClick = {this.btnSearch} className = "search-btn"> search </button>
           <p>{this.state.inputHashTag_}</p>
         </div>
         <Thoughts inputThoughts = {this.state.myHashTag_}/>

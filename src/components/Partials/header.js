@@ -33,12 +33,13 @@ class HeaderComponent extends Component {
             <Link to='/' className='logo-top'>
               <img alt = "logo-img" src = { logoImg } />
             </Link>
-            <h1>{headerText}</h1>
           </div>
+
+          <h1 className = "page-name">{headerText}</h1>
 
         <Link to='/settings' className='user-settings'>
           <i className='fas fa-cog' />
-          <p>Account Settings</p>
+          <p>Settings</p>
         </Link>
       </header>
     );
