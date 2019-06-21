@@ -91,7 +91,7 @@ class SearchBar extends Component {
       )
     } else {
       contentToDisplay=(
-        <div>DEFAULT</div>
+        <Fragment></Fragment>
       )
     }
 

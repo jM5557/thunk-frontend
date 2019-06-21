@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import LogoImg from './../../images/logo.png';
 
 class LogInForm extends Component {
+  
   constructor(props) {
     super(props);
   }

@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import Thoughts from '../../Posts/Thoughts';
-import Comments from '../../Posts/Comments';
 import axios from 'axios';
+import CommentList from '../../Comments/CommentList';
 
 
 export default class Activity extends Component {
@@ -69,7 +69,7 @@ export default class Activity extends Component {
         {this.state.view === 'POSTS' ? (
           <Fragment><Thoughts inputThoughts = {this.state.myThought_}/></Fragment>
         ) : (
-          <div className ="post-preview"><Comments myComment = {this.state.myComment_}/></div>
+          <Fragment><CommentList commentList = {this.state.myComment_}/></Fragment>
         )}
         </div>
       </div>
