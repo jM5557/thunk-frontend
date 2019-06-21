@@ -10,24 +10,45 @@ import Modal from './modals/Modal';
 import ModalBackdrop from './modalBackdrop/ModalBackdrop';
 import Settings from './User/Account/Settings';
 import Activity from './User/Account/Activity';
-import thoughts from '../data/thoughts';
+import Search from './search/Search';
 import axios from 'axios'
 class Main extends React.Component {
-  state = {
-    creating_: false,
-    confirmReport_: false
-  };
+  
+  constructor (props) {
+    super(props);
+
+    this.state = {
+      creating_: false,
+      confirmReport_: false,
+      thoughtData: [],
+      post_id_: 0
+    };
+  }
+
+  componentDidMount () {
+    console.log()
+    axios.get(
+      'https://thunk-api-19.herokuapp.com/api/v1/thought'
+    ).then((res) => {
+      this.setState({
+        thoughtData: res.data
+      });
+    }).catch((err)=>{
+      console.log(err);
+    });
+  }
+
 
   modalCancelHandler = () => {
-    this.setState({ creating_: false, confirmReport_: false });
+    this.setState({ creating_: false, confirmReport_: false, modalType_: 'Thought' });
   };
 
   modalReportHandler = () => {
     this.setState({ creating_: false });
   };
 
-  startModalHandler = () => {
-    this.setState({ creating_: true });
+  startModalHandler = (id, modalType = 'Thought') => {
+    this.setState({ creating_: true, post_id_: id, modalType_: modalType });
   };
 
   confirmHandler = () => {
@@ -41,13 +62,30 @@ class Main extends React.Component {
     });
   };
 
-  componentDidMount() {
-    this.props.getThoughts();
+  reportComment = () => {
+    axios.post( 'https://thunk-api-19.herokuapp.com/api/v1/user/report/comment/' + this.state.post_id_ + '/user/1', 
+        {}
+    )
+    .then( (res) => {
+        console.log(res + ", Comment Reported");
+        this.modalCancelHandler();
+    })
+    .catch( (err) => {
+        console.log(err);
+    });
+  }
 
-      axios.get("/students")
-        .then(res => res.data)
-        .then(students => console.log(students))
-        .catch(err => console.log(err));
+  reportPost = () => {
+    axios.post( 'https://thunk-api-19.herokuapp.com/api/v1/user/report/post/' + this.state.post_id_ + '/user/1', 
+        {}
+    )
+    .then( (res) => {
+        console.log(res);
+        this.modalCancelHandler();
+    })
+    .catch( (err) => {
+        console.log(err);
+    });
   }
 
   render() {
@@ -59,9 +97,9 @@ class Main extends React.Component {
             <Fragment>
               <ModalBackdrop onCancel={this.modalCancelHandler} />
               <Modal title='Report'>
-                <p>Confirm report</p>
+                <p>Confirm { (this.state.modalType_ === 'Thought') ? 'Thought' : 'Comment' } Report</p>
                 <button
-                  onClick={this.modalCancelHandler}
+                  onClick={(this.state.modalType_ === 'Thought') ? this.reportPost : this.reportComment }
                   className='modal-btn-confirm'
                 >
                   Confirm
@@ -105,7 +143,7 @@ class Main extends React.Component {
               component={() => (
                 <Thoughts
                   startModalHandler={this.startModalHandler}
-                  {...this.props}
+                  inputThoughts = { this.state.thoughtData }
                 />
               )}
             />
@@ -147,6 +185,12 @@ class Main extends React.Component {
               exact
               path='/create/thought'
               component={() => <CreateThought {...this.props} />}
+            />
+
+            <Route
+              exact
+              path='/search'
+              component={() => <Search {...this.props} />}
             />
 
             <Route exact path='/settings' component={Settings} />

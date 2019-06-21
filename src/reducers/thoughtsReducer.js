@@ -1,38 +1,117 @@
-function thoughtsReducer(state = [], action)
-{
-  const i = action.inputPostId;
+import axios from "axios";
+
+let lat = 0.00;
+let long = 0.00;
+
+window.setInterval( () => {
+  if (navigator.geolocation) {
+
+    navigator.geolocation.getCurrentPosition((pos) => { 
+        long = pos.coords.longitude;
+        lat = pos.coords.latitude;
+    },
+    
+    function() {
+
+      console.log('some error');
+
+    });
+
+  }
+
+  else {
+    
+    console.log('some error');
+
+  }
+}, 5000);
+
+function thoughtsReducer(state = [], action) {
+
   switch(action.type)
   {
     case 'UP_VOTE' :
-      return[
-        ...state.slice(0,i),
-        {...state[i], up_vote: state[i].up_vote+1},
-        ...state.slice(i+1),
-      ]
-    case 'DOWN_VOTE' :
-      return[
-        ...state.slice(0,i),
-        {...state[i], down_vote: state[i].down_vote+1},
-        ...state.slice(i+1),
-      ]
-    case 'REPORT_THOUGHT' :
-      return[
-        ...state.slice(0,i),
-        {...state[i], report_count: state[i].report_count+1},
-        ...state.slice(i+1),
-      ]
-    case 'CREATE_THOUGHT' :
-      console.log("REDUCER: create_thought", state);
-      return [...state,{
-        id: action.inputPostId,
-        text: action.inputText,
-        up_vote: action.inputUpVote,
-        down_vote: action.inputDownVote,
-        report_count: action.inputReportCount,
-        hash_tag: action.inputHashTags,
-        time_stamp: action.inputTimeStamp,
-      }]
+      axios.post('https://thunk-api-19.herokuapp.com/api/v1/post/likes/post/' + action.inputPostId  + '/user/1', {})
+      .then( (res) => {
 
+        console.log(res);
+
+      }).catch( (err) => {
+
+        console.log("There was an error");
+
+      } );
+      
+      return true;
+    case 'DOWN_VOTE' :
+      axios.post('https://thunk-api-19.herokuapp.com/api/v1/post/dislikes/post/' + action.inputPostId  + '/user/1', {})
+      .then( (res) => {
+
+        console.log(res);
+
+      }).catch( (err) => {
+
+        console.log("There was an error");
+
+      } );
+        
+        return true;
+    case 'REPORT_THOUGHT' :
+        axios.post('' + action.inputPostId, {
+        
+        }).then( (res) => {
+  
+        }).catch( (err) => {
+  
+        } )
+        
+        return true;
+    case 'DELETE_THOUGHT' :
+      console.log(action.inputPostId);
+      axios.delete('https://thunk-api-19.herokuapp.com/api/v1/post/' + action.inputPostId)
+        .then( (res) => {
+          window.location.href = "/";
+        } )
+        .catch( (err) => {
+          console.log(err);
+        });
+      return true;
+    case 'CREATE_THOUGHT' :
+      axios.post('https://thunk-api-19.herokuapp.com/api/v1/post/', {
+        text: action.inputText,
+        lattitude: lat,
+        longitude: long
+      }).then( (res) => {
+        
+        console.log("Post added");
+        
+        let p_id = res.data.id;
+
+        let p_arr = action.inputTags.map( (t, i) => {
+
+          return axios({
+            method: 'post',
+            url: 'https://thunk-api-19.herokuapp.com/api/v1/tag/post/' + res.data.id,
+            data: { tag: t }
+          });
+  
+        });
+
+        axios.all(p_arr).then(axios.spread((...responses) => {
+          
+          responses.forEach(res => console.log('Success'))
+          
+          console.log('submitted all axios calls');
+          window.location.href = "/thoughts/" + p_id;
+        }))
+        .catch(error => { console.log(error) });
+
+        return;
+      } ).catch( (err) => {
+        console.log(err);
+      });
+
+      return true;
     case 'GET_THOUGHTS' :
       return action.thoughts_
 

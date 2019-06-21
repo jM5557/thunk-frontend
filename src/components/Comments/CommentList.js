@@ -8,7 +8,7 @@ export default class CommentList extends Component {
                 { this.props.commentList.map((c, i ) => {
                     return (
 
-                        <SingleComment key = {i} data = { c } />
+                        <SingleComment key = {c.id} data = { c } startCommentModalHandler = { this.props.startCommentModalHandler } />
 
                     )
                 }) }

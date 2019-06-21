@@ -1,19 +1,100 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 
 export default class ThoughtPreview extends Component {
+    constructor (props) {
+        super(props);
+
+        this.state = {
+            vote_state: "DEFAULT",
+            vote_start: props.thoughts_.vote,
+            vote_current: props.thoughts_.vote
+        }
+    }
+
+    upvotePost = () => {
+        axios.post('https://thunk-api-19.herokuapp.com/api/v1/post/likes/post/' + this.props.thoughts_.post.id  + '/user/1', {})
+        .then( (res) => {
+
+            console.log(res);
+
+        }).catch( (err) => {
+            console.log("There was an error");
+        });
+    }
+
+    setPostUpvote = (e) => {
+        e.preventDefault();
+
+        if (this.state.vote_state === "UP") {
+
+            this.setState({
+                vote_state: "DEFAULT",
+                vote_current: this.state.vote_start
+            });
+
+            this.upvotePost();
+
+            return
+
+        }
+
+        this.upvotePost();
+
+        this.setState({
+            vote_state: "UP",
+            vote_current: this.state.vote_start + 1
+        });
+    }
+
+    downvotePost = () => {
+        axios.post('https://thunk-api-19.herokuapp.com/api/v1/post/dislikes/post/' + this.props.thoughts_.post.id  + '/user/1', {})
+        .then( (res) => {
+            console.log(res);
+        }).catch( (err) => {
+            console.log("There was an error");
+        });
+    }
+
+    setPostDownvote = (e) => {
+        e.preventDefault();
+
+        if (this.state.vote_state === "DOWN") {
+
+            this.setState({
+                vote_state: "DEFAULT",
+                vote_current: this.state.vote_start
+            });
+
+            this.downvotePost();
+
+            return;
+
+        }
+
+        this.downvotePost();
+
+        this.setState({
+            vote_state: "DOWN",
+            vote_current: this.state.vote_start - 1
+        })
+
+        
+    }
+
     render() {
-      let myThought = this.props.thoughts_[this.props.index].post;
-      let myComment = this.props.thoughts_[this.props.index].comment;
+      let myThought = this.props.thoughts_.post;
+      let myComment = this.props.thoughts_.comment;
       // let myCount = this.props.thoughts_[this.props.index].count;
-      let myTags = this.props.thoughts_[this.props.index].tag;
+      let myTags = this.props.thoughts_.tag;
 
         return (
             <div className = "post-preview">
                 <div className = "details-top">
                   <p>postId: {myThought.id} </p>
                     <span className = "timestamp">
-                        {this.props.myProps.post.createdAt}
+                        {this.props.thoughts_.post.createdAt}
                     </span>
                 </div>
 
@@ -22,20 +103,33 @@ export default class ThoughtPreview extends Component {
                 </div>
 
                 <div className = "tags">
-                {myTags.map((myTag, i) => <span key = {i}> #{myTags[i].tag} </span>)}
+                { myTags.map((myTag, i) => <span key = {i}> #{myTags[i].tag} </span>)}
                 </div>
 
                 <div className = "controls-bottom">
                     <div className = "vote-wrapper">
-                        <button onClick = {this.props.upVote.bind(null, this.props.myProps.id)} className = "vote up">Up</button>
-                        <span className = "votes">0</span>
-                        <button onClick = {this.props.downVote.bind(null, this.props.myProps.id)} className = "vote down">Down</button>
+                        <button 
+                                onClick = { this.setPostUpvote } 
+                                className = { (this.state.vote_state === "UP") ? "vote up active" : "vote up" }
+                        >
+                            Up
+                        </button>
+
+                        <span className = "votes">{ this.state.vote_current }</span>
+                        
+                        <button 
+                            onClick = { this.setPostDownvote } 
+                            className = { (this.state.vote_state === "DOWN") ? "vote down active" : "vote down" }
+                        >
+                                Down
+                        </button>
+
                         <Link to = {`/thoughts/${myThought.id}`}>
-                        <button className='comment-btn'><i className='fas fa-comments' /></button>
+                            <i className='fas fa-comments' />
                         </Link>
                         <span className = "votes"> {myComment.length} </span>
                     </div>
-                    <button onClick={() => this.props.startModalHandler()} className='report'> <i className='fas fa-flag' /> </button>
+                    <button onClick={() => this.props.startModalHandler(myThought.id)} className='report'> <i className='fas fa-flag' /> </button>
                 </div>
             </div>
         )

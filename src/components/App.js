@@ -1,6 +1,6 @@
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
-import *as actionCreators from '../actions/ActionCreators';
+import * as actionCreators from '../actions/ActionCreators';
 import {getThoughts} from '../store'
 import Main from './Main';
 

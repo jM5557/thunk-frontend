@@ -7,17 +7,6 @@ class LogInForm extends Component {
     super(props);
   }
 
-  handleUserLogin = () => {
-    axios
-      .get('https://thunk-api-19.herokuapp.com/api/v1/auth/google')
-      .then(res => {
-        console.log(res);
-      })
-      .catch(err => {
-        console.log(err);
-      });
-  };
-
   render() {
     return (
       <div className='log-in-form form'>
@@ -26,9 +15,6 @@ class LogInForm extends Component {
           href='https://thunk-api-19.herokuapp.com/api/v1/auth/google'
         >
           Log In With Google
-        </a>
-        <a className='login-btn' href='https://facebook.com'>
-          Log In With Facebook
         </a>
       </div>
     );

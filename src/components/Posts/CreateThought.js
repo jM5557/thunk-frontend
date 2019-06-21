@@ -1,18 +1,14 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 
 export default class CreateThought extends Component {
   constructor(props) {
     super(props);
     this.state = {
       inputPostId: this.props.thoughts_.length,
-      inputUpVote_: 0,
-      inputDownVote_: 0,
-      inputReportCount_: 0,
-      inputTimeStamp_: '0 min ago',
-      inputMarkOwner_: true,
-      inputText_: '',
       inputTextHolder_: '',
-      inputHashTagsHolder_: []
+      inputHashTagsTextHolder_: '',
+      inputHashTagsHolder_: [],
+      hashTagsCount: 0
     };
   }
 
@@ -21,44 +17,100 @@ export default class CreateThought extends Component {
   };
 
   getInputHashTags = event => {
-    this.setState({ inputHashTagsHolder_: [event.target.value] });
+    this.setState({ inputHashTagsTextHolder_: event.target.value });
   };
-  // btnSubmit = () =>
-  // {
-  //
-  //     this.setState((state) => ({
-  //       inputText_: state.inputTextHolder_,
-  //       inputHashTags_:push(inputHashTagsHolder_),
-  //     }) )
-  //
-  // }
+
+  addHashTagToList = () => {
+    
+    let hash_tag_list = [...this.state.inputHashTagsHolder_];
+    let hash_tag = this.state.inputHashTagsTextHolder_;
+
+    hash_tag = hash_tag.replace(/[^0-9a-zA-Z]/g, '');
+
+    if (hash_tag.length < 1)
+      return;
+
+
+    hash_tag_list.push({ 
+                        id: (this.state.hashTagsCount + new Date().getMilliseconds()), 
+                        text: hash_tag
+                      });
+
+    this.setState({ 
+      inputHashTagsHolder_: hash_tag_list,
+      hashTagsCount: this.state.hashTagsCount + 1
+    })
+  
+  }
+
+  removeHashTagFromList = (item) => {
+
+    console.log('foo');
+    let hash_tag_list = [...this.state.inputHashTagsHolder_];
+
+    let tagIndex = hash_tag_list.indexOf(item);
+    if (tagIndex !== -1) {
+      hash_tag_list.splice(tagIndex, 1);
+      this.setState({
+        inputHashTagsHolder_: hash_tag_list
+      });
+
+      console.log('bar')
+    }
+  } 
+
+  
   render() {
+
+    let hashTags = this.state.inputHashTagsHolder_.map((tag, i) => {
+
+      return (
+        <span key = {tag.id} className = "tag" onClick = { this.removeHashTagFromList.bind(this, tag) }>
+          #{ tag.text } 
+          <i class="fas fa-times"></i>
+        </span>
+      )
+    });
+
     return (
       <div className='create-thought-wrapper'>
         <h2> Create a Thought</h2>
-        <input
-          className='thought-title'
-          value={this.state.inputTextHolder_}
-          onChange={this.getInputText}
-          placeholder='Type title'
-        />
-        <textarea placeholder='Write your thoughts...' rows='15' />
-        <input
-          className='tags-box'
-          value={this.state.inputHashTagsHolder_}
-          onChange={this.getInputHashTags}
-          placeholder='type has tags with #'
-        />
+        
+        <textarea className = "thought-title" value = {this.state.inputTextHolder_} onChange = {this.getInputText} placeholder='Write your thoughts...'/>
+
+        <div>
+          <input
+            type = "text"
+            className='tags-box'
+            value={this.state.inputHashTagsTextHolder_}
+            onChange={this.getInputHashTags}
+            placeholder='type has tags with #'
+          />
+
+          <button onClick = { this.addHashTagToList } >Add +</button>
+
+          <div className = "tags-wrapper">
+          { (this.state.inputHashTagsHolder_.length > 0
+            || this.state.inputHashTagsTextHolder_.length > 0) ?
+            (<Fragment>
+              { hashTags }
+              </Fragment>
+            ) : (
+              <div className = "error">Add a Hashtag</div>
+            )
+          }
+          </div>
+          
+        </div>
+      
         <button
           onClick={this.props.createThought.bind(
             null,
             this.state.inputPostId,
             this.state.inputTextHolder_,
-            this.state.inputUpVote_,
-            this.state.inputDownVote_,
-            this.state.inputReportCount_,
-            this.state.inputHashTagsHolder_,
-            this.state.inputTimeStamp_
+            this.state.inputHashTagsHolder_.map((item, i) => {
+              return item.text 
+            })
           )}
         >
           Post

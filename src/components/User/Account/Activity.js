@@ -1,29 +1,54 @@
 import React, { Component, Fragment } from 'react';
 import Thoughts from '../../Posts/Thoughts';
-import Comments from '../../../data/comments';
-import CommentList from '../../Comments/CommentList';
+import Comments from '../../Posts/Comments';
+import axios from 'axios';
+
 
 export default class Activity extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      data: Thoughts,
-      comment_data: Comments['2'],
-      view: 'POSTS'
+    this.state =
+    {
+      result : "",
+      getUserThought : "https://thunk-api-19.herokuapp.com/api/v1/thought/user/",
+      getUserComment :"https://thunk-api-19.herokuapp.com/api/v1/comment/user/",
+      myThought_: [],
+      myComment_: [],
+      userId_: 4,
+      view: 'POSTS',
     };
-
     this.changeActivityView = this.changeActivityView.bind(this);
-  }
 
+  }
   changeActivityView(ACTIVITY_VIEW) {
-    this.setState({
-      view: ACTIVITY_VIEW
-    });
-  }
-  render() {
-    console.log(this.state.comment_data);
+      this.setState({
+        view: ACTIVITY_VIEW
+      });
+    }
 
+  fetchThoughtData = ()=>
+  {
+    axios.get(this.state.getUserThought+this.state.userId_).then(response =>
+    {
+      const result = response.data
+      this.setState({myThought_: result});
+    }).catch(err => console.log(err), this.setState({result: "Not Found"}));
+
+    axios.get(this.state.getUserComment+this.state.userId_).then(response =>
+    {
+      const result = response.data
+      this.setState({myComment_: result});
+    }).catch(err => console.log(err), this.setState({result: "Not Found"}));
+
+  }
+  componentDidMount()
+  {
+    this.fetchThoughtData();
+  }
+
+
+  render() {
     return (
       <div className='activity-page content-page'>
         <div className='tab-wrapper'>
@@ -40,15 +65,20 @@ export default class Activity extends Component {
             Comments
           </button>
         </div>
-
         <div className='test'>
-          {this.state.view === 'POSTS' ? (
-            <Fragment>{this.props.children}</Fragment>
-          ) : (
-            <CommentList commentList={this.state.comment_data} />
-          )}
+        {this.state.view === 'POSTS' ? (
+          <Fragment><Thoughts inputThoughts = {this.state.myThought_}/></Fragment>
+        ) : (
+          <div className ="post-preview"><Comments myComment = {this.state.myComment_}/></div>
+        )}
         </div>
       </div>
     );
   }
 }
+// {this.state.myComment_.map((mC,i) = > <Comments myComment ={mC}/>)}
+// {this.state.view === 'POSTS' ? (
+//   <Fragment>{this.props.children}</Fragment>
+// ) : (
+//   <ThoughtPreview inputThoughts = {this.props.thoughts_}/>
+// )}

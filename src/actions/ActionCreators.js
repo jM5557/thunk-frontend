@@ -23,21 +23,25 @@ export function reportThought(inputPostId)
   }
 }
 
-export function createThought(inputPostId, inputText, inputUpVote, inputDownVote, inputReportCount, inputHashTags, inputTimeStamp)
+export function deleteThought(inputPostId) {
+  console.log(inputPostId);
+  return {
+    type: 'DELETE_THOUGHT',
+    inputPostId
+  }
+}
+
+export function createThought(inputPostId, inputText, inputTags)
 {
   return {
     type: 'CREATE_THOUGHT',
     inputPostId,
     inputText,
-    inputUpVote,
-    inputDownVote,
-    inputReportCount,
-    inputHashTags,
-    inputTimeStamp,
+    inputTags
   }
 }
 
-export function createComment(inputPostId, inputText, inputMarkOwner)
+export function createComment(inputPostId, inputText, inputMarkOwner, inputUserId)
 {
 
   return {
@@ -45,5 +49,6 @@ export function createComment(inputPostId, inputText, inputMarkOwner)
     inputPostId,
     inputText,
     inputMarkOwner,
+    inputUserId
   }
 }

@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { withRouter, Link } from 'react-router-dom';
-import SearchBar from '../search/SearchBar';
 
 class HeaderComponent extends Component {
   constructor(props) {
@@ -20,22 +19,21 @@ class HeaderComponent extends Component {
       case 'activity':
         headerText = 'My Activity';
         break;
+      case 'search':
+        headerText = 'Find Thoughts';
+        break;
       default:
         headerText = '';
     }
 
     return (
       <header className='main-header'>
-        {this.props.location.pathname.slice(1) === 'search' ? (
-          <SearchBar />
-        ) : (
           <div className='header-inner'>
             <Link to='/' className='logo-top'>
               Thunk!
             </Link>
             <h1>{headerText}</h1>
           </div>
-        )}
 
         <Link to='/settings' className='user-settings'>
           <i className='fas fa-cog' />

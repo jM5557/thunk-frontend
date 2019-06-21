@@ -34,7 +34,7 @@ export function createThought(inputPostId, inputText, inputTag)
   }
 }
 
-export function createComment(inputPostId, inputText, inputMarkOwner)
+export function createComment(inputPostId, inputText, inputMarkOwner, inputUserId)
 {
 
   return {
@@ -42,6 +42,7 @@ export function createComment(inputPostId, inputText, inputMarkOwner)
     inputPostId,
     inputText,
     inputMarkOwner,
+    inputUserId
   }
 }
 
