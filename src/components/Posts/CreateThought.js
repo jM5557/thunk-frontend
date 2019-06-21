@@ -109,7 +109,7 @@ export default class CreateThought extends Component {
             this.state.inputPostId,
             this.state.inputTextHolder_,
             this.state.inputHashTagsHolder_.map((item, i) => {
-              return { tag: item.text }
+              return item.text 
             })
           )}
         >

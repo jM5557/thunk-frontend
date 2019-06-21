@@ -16,7 +16,6 @@ export default class Thoughts extends Component {
               <ThoughtPreview
                 index = {i}
                 thoughts_ = {myThoughts}
-                
                 startModalHandler = {this.props.startModalHandler}
               />
             </div>

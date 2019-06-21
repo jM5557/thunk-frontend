@@ -199,12 +199,20 @@ button {
         background: $color-blue url('./../images/votes-up.png') no-repeat center
           center;
         background-size: 65% auto;
+
+        &.active {
+          background-color: orange;
+        }
       }
 
       &.down {
         background: $color-blue url('./../images/votes-down.png') no-repeat
           center center;
         background-size: 65% auto;
+
+        &.active {
+          background-color: blue;
+        }
       }
     }
 
@@ -393,11 +401,10 @@ html {
 }
 
 .searchbar-header {
-  width: 75%;
-  max-width: 85%;
   display: flex;
   justify-content: center;
   flex-direction: column;
+  background-color: $color-blue;
 
   input[type='text'] {
     display: inline;
