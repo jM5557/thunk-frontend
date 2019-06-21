@@ -15,7 +15,7 @@ export default class Activity extends Component {
       getUserComment :"https://thunk-api-19.herokuapp.com/api/v1/comment/user/",
       myThought_: [],
       myComment_: [],
-      userId_: 4,
+      userId_: 1,
       view: 'POSTS',
     };
     this.changeActivityView = this.changeActivityView.bind(this);

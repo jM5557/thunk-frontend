@@ -139,7 +139,7 @@ class Main extends React.Component {
           <Switch>
             <Route
               exact
-              path='/'
+              path='/home'
               component={() => (
                 <Thoughts
                   startModalHandler={this.startModalHandler}
