@@ -1,12 +1,6 @@
 import React, { Fragment } from 'react';
 import Thoughts from './Posts/Thoughts';
-<<<<<<< HEAD
 import OneThought from './Posts/OneThought';
-||||||| merged common ancestors
-import SingleThought from './Posts/SingleThought';
-=======
-import SingleThought from './Posts/OneThought';
->>>>>>> 46133bb12f5a4233888585828e2edf75655c59ce
 import CreateThought from './Posts/CreateThought';
 import HeaderComponent from './Partials/header';
 import Navbar from './Partials/navbar';
@@ -19,7 +13,7 @@ import Activity from './User/Account/Activity';
 import Search from './search/Search';
 import axios from 'axios'
 class Main extends React.Component {
-  
+
   constructor (props) {
     super(props);
 
@@ -69,7 +63,7 @@ class Main extends React.Component {
   };
 
   reportComment = () => {
-    axios.post( 'https://thunk-api-19.herokuapp.com/api/v1/user/report/comment/' + this.state.post_id_ + '/user/1', 
+    axios.post( 'https://thunk-api-19.herokuapp.com/api/v1/user/report/comment/' + this.state.post_id_ + '/user/1',
         {}
     )
     .then( (res) => {
@@ -82,7 +76,7 @@ class Main extends React.Component {
   }
 
   reportPost = () => {
-    axios.post( 'https://thunk-api-19.herokuapp.com/api/v1/user/report/post/' + this.state.post_id_ + '/user/1', 
+    axios.post( 'https://thunk-api-19.herokuapp.com/api/v1/user/report/post/' + this.state.post_id_ + '/user/1',
         {}
     )
     .then( (res) => {
